@@ -1,4 +1,4 @@
-from bokeh.models import ColumnDataSource
+from bokeh.models import ColumnDataSource, HoverTool
 from bokeh.plotting import figure
 
 class ConsumptionsVisualization:
@@ -15,14 +15,15 @@ class ConsumptionsVisualization:
     def get_plot(self):
 
         tooltips = [
-            ("Día", "@x"),
-            ("Consumo", "$y"),
+            ("Día", "@formatted_date"),
+            ("Hora", "@formatted_time"),
+            ("Consumo ", "$y KWh"),
         ]
 
         p = figure(
             title="Gráfica de Consumo",
             x_axis_label='Día',
-            y_axis_label='Consumo',
+            y_axis_label='Consumo (KWh)',
             sizing_mode="stretch_width",
             x_axis_type="datetime",
             tooltips=tooltips
@@ -36,6 +37,8 @@ class ConsumptionsVisualization:
         self.source.data = {
             'consumption': new_data['consumo'],
             'time': new_data['datetime'],
+            'formatted_date': new_data['datetime'].dt.strftime('%d-%m-%Y'),
+            'formatted_time': new_data['datetime'].dt.strftime('%H:%M') # Add this line
         }
 
 ####################################################################################################
