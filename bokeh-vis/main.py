@@ -4,7 +4,6 @@ from utils.data import load_data
 from bokeh.plotting import curdoc
 from bokeh.layouts import column
 
-import pandas as pd
 import sys
 
 # Get the arguments
