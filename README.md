@@ -1,6 +1,12 @@
 # hackudc-electrodatos
 
 <p align="center">
+    <a href="https://github.com/agr17/hackudc-electrodatos/" alt="hackudc-electrodatos">
+        <img src="https://github.com/agr17/hackudc-electrodatos/blob/main/assets/electrodatos-high-resolution-logo.png"/>
+    </a>
+</p>
+
+<p align="center">
     <a href="https://github.com/agr17/hackudc-electrodatos/blob/develop/LICENSE" alt="License">
         <img src="https://img.shields.io/github/license/agr17/hackudc-electrodatos" />
     </a>
