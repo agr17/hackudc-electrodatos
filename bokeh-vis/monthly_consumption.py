@@ -79,8 +79,8 @@ class MonthlyConsumption:
         df_copy = df.copy()
 
         df_copy['day'] = df_copy['datetime'].dt.to_period('D')
-        result = df_copy.groupby('day').agg({'consumo': 'sum', 'price': 'sum'}).reset_index()
-        result.columns = ['day', 'consumo', 'price']
+        result = df_copy.groupby('day').agg({'consumo': 'sum', 'expenses': 'sum'}).reset_index()
+        result.columns = ['day', 'consumo', 'expenses']
         result['day'] = result['day'].dt.strftime('%d')
 
         return result
@@ -93,7 +93,7 @@ class MonthlyConsumption:
 
         self.source.data = {
             'consumption': filtered_df['consumo'],
-            'cost': filtered_df['price'],
+            'cost': filtered_df['expenses'],
             'time': filtered_df['day'],
         }
 

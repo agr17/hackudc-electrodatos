@@ -6,3 +6,12 @@ def load_data(csv_path):
     df['datetime'] = pd.to_datetime(df['datetime'])
 
     return df
+
+def unify_data(df_consumption, df_costs):
+        df = df_consumption.set_index('datetime').join(df_costs.set_index('datetime'))
+        df.reset_index(inplace=True)
+        return df
+
+def calculate_expenses(df):
+    df['expenses'] = df['consumo'] * df['price']
+    return df
