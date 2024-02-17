@@ -3,23 +3,16 @@ from datetime import datetime
 from utils.data import load_data
 from calendar import day_name
 
-# Funciones para saber si es fin de semana o no
-def is_weekend(row):
-    dte = row['datetime']
-    return not dte.isoweekday() < 6
+def mean_consumption_by_day_of_week(df):
+    df = pd.DataFrame(df.groupby(df['datetime'].dt.day_of_week)['consumo'].mean())
+    df = df.reset_index()
+    #df = df.rename(columns={"datetime": "weekday"})
+    df['datetime'] = df['datetime'].apply(lambda x: day_name[x])
+    print(df)
+    return df
 
-def is_weekday(row):
-    dte = row['datetime']
-    return dte.isoweekday() < 6
-
-csv_path = "../data/cups/electrodatos_0.csv"
+csv_path = "data/cups/electrodatos_0.csv"
 df = load_data(csv_path)
-
-weekends = df.apply(is_weekend, axis=1)
-df_weekend = df[weekends]
-
-weekdays = df.apply(is_weekday, axis=1)
-df_weekdays = df[weekdays]
 
 # Media de consumo total
 df_mean = df['consumo'].mean()
@@ -32,6 +25,9 @@ print("\n\nMedia de consumo por día de la semana:\n")
 
 df_mean_by_day_of_week = pd.DataFrame(df.groupby(df['datetime'].dt.day_of_week)['consumo'].mean())
 print(df_mean_by_day_of_week)
+
+
+
 
 
 # Día de la semana de más consumo de media
