@@ -8,15 +8,30 @@
         <meta charset="utf-8">
         {{ bokeh_css }}
         {{ bokeh_js }}
+        <link rel="stylesheet" type="text/css" href="/bokeh-vis/static/css/special.css">
+        <script src="/bokeh-vis/static/js/special.js"></script>
     </head>
     <body>
         <section class="hero">
-            <h1>Consumption</h1>
+            <h1 class="fade resaltado">Factura eléctrica wrapped</h1>
         </section>
-        {{ plot_div|indent(8) }}
-        {{ plot_script|indent(8) }}
-        <footer>
-            <h2>Créditos</h2>
+
+        <h1 class="fade resaltado">{{ year }} ha sido un gran año para ti y nosotros hemos hecho una recopilación de los datos más destacados de tu factura eléctrica...</h1>
+
+        <h1 class="fade">Estás en el top <span class="valor">{{ porcentaje_top }}</span>% de los consumidores de este año.</h1>
+
+        <h1 class="fade">Has consumido de media este año <span class="valor"> {{ consumo_medio_input }} kWh/h.</span></h1>
+        <h1 class="fade">Tu consumo medio es {{ comparacion }} a la media ({{ media_existente }} kWh/h).</h1>
+        
+        <br><br>
+        <h1 class="fade resaltado">Gráficas de consumo</h1>
+        <div class="fade">
+            {{ plot_div|indent(8) }}
+            {{ plot_script|indent(8) }}
+        </div>
+
+        <footer class="fade">
+            <h2>Autores</h2>
             <ul>
                 <li>Pablo</li>
                 <li>Manuel</li>
