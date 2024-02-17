@@ -2,7 +2,7 @@
 
 <p align="center">
     <a href="https://github.com/agr17/hackudc-electrodatos/" alt="hackudc-electrodatos">
-        <img src="https://github.com/agr17/hackudc-electrodatos/blob/main/assets/electrodatos-high-resolution-logo.svg.png"/>
+        <img src="https://github.com/agr17/hackudc-electrodatos/blob/main/assets/electrodatos-high-resolution-logo.png"/>
     </a>
 </p>
 
