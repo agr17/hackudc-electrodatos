@@ -3,6 +3,7 @@ from costs_visualizer import CostsVisualizer
 import src.petitions as cost_data
 import src.data as consumption_data
 
+from bokeh.models import Div
 from bokeh.plotting import curdoc
 from bokeh.layouts import column
 
@@ -34,6 +35,8 @@ df.dropna(inplace=True) # TODO: esto es temporal para filtrar rapido
 consumption_vis = ConsumptionsVisualizer()
 consumption_vis.update_source(df_consumption)
 
+cost_div = Div(text="<h2>Coste por día y hora</h2>")
+
 costs_vis = CostsVisualizer()
 costs_vis.update_source(df)
 
@@ -44,6 +47,6 @@ p_cost = costs_vis.get_plot()
 
 # Create the layout
 
-layout = column(plot, p_cost, sizing_mode="stretch_width")
+layout = column(plot, cost_div, p_cost, sizing_mode="stretch_width")
 curdoc().add_root(layout)
 
