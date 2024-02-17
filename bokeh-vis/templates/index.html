@@ -8,18 +8,24 @@
         <meta charset="utf-8">
         {{ bokeh_css }}
         {{ bokeh_js }}
+        <link rel="stylesheet" type="text/css" href="/bokeh-vis/static/css/special.css">
+        <script src="/bokeh-vis/static/js/special.js"></script>
     </head>
     <body>
         <section class="hero">
-            <h1>Consumption</h1>
+            <h1 class="fade">Consumption</h1>
         </section>
-        {{ plot_div|indent(8) }}
-        {{ plot_script|indent(8) }}
 
-        <h1>Estás en el top {{ porcentaje_top }}% de los consumidores de este año {{ year }}.</h1>
+        <div class="fade">
+            {{ plot_div|indent(8) }}
+            {{ plot_script|indent(8) }}
+        </div>
 
-        <footer>
-            <h2>Créditos</h2>
+        <h1 class="fade">Estás en el top <span class="valor">{{ porcentaje_top }}</span>% de los consumidores de este año {{ year }}.</h1>
+        
+
+        <footer class="fade">
+            <h2>Autores</h2>
             <ul>
                 <li>Pablo</li>
                 <li>Manuel</li>

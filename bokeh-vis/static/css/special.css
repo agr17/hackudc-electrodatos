@@ -1,0 +1,79 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa; /* Fondo más claro */
+    color: #333333;
+    margin: 0; /* Eliminar margen predeterminado */
+}
+
+/* Estilos para el encabezado */
+.hero {
+    padding: 50px 0; /* Espaciado interno */
+}
+
+/* Estilos para los encabezados (h1, h2) */
+h1, h2 {
+    margin-top: 0; /* Eliminar margen superior predeterminado */
+    margin-bottom: 20px; /* Espaciado inferior */
+    font-weight: bold; /* Fuente en negrita */
+    text-align: center; /* Centrar texto */
+}
+
+/* Estilos para el contenido */
+.content {
+    padding: 20px; /* Espaciado interno */
+}
+
+/* Estilos para el pie de página */
+footer {
+    background-color: #f8f9fa; /* Fondo más claro */
+    padding: 20px;
+    text-align: center; /* Centrar texto */
+}
+
+/* Estilos para la lista */
+ul {
+    padding: 0; /* Eliminar relleno predeterminado */
+    list-style: none; /* Eliminar viñetas */
+}
+
+/* Estilos para los elementos de la lista */
+ul li {
+    margin-bottom: 10px; /* Espaciado inferior */
+}
+
+/* Estilos para los enlaces */
+a {
+    color: #007bff; /* Color del enlace */
+    text-decoration: none; /* Eliminar subrayado predeterminado */
+}
+
+a:hover {
+    text-decoration: underline; /* Subrayar en el hover */
+}
+
+/* Estilos para la tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    padding: 8px;
+    border-bottom: 1px solid #cccccc;
+}
+
+table th {
+    background-color: #f0f0f0;
+    text-align: left;
+}
+
+/* Fade in */
+.fade {
+    opacity: 0;
+    transition: opacity 2.5s ease-in-out;
+}
+
+.fade.visible {
+    opacity: 1;
+}
