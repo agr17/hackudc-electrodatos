@@ -1,3 +1,10 @@
+# SPDX-FileCopyrightText: 2024 Manuel Corujo
+# SPDX-FileCopyrightText: 2024 María López
+# SPDX-FileCopyrightText: 2024 Pablo Boo
+# SPDX-FileCopyrightText: 2024 Ángel Regueiro
+#
+# SPDX-License-Identifier: MIT
+
 pandas==2.2.0
 matplotlib==3.8.3
 ydata-profiling==4.6.4

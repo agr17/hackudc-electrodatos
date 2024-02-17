@@ -1,3 +1,10 @@
+# SPDX-FileCopyrightText: 2024 Manuel Corujo
+# SPDX-FileCopyrightText: 2024 María López
+# SPDX-FileCopyrightText: 2024 Pablo Boo
+# SPDX-FileCopyrightText: 2024 Ángel Regueiro
+#
+# SPDX-License-Identifier: MIT
+
 import pandas as pd
 from src.data import load_data
 from calendar import day_name

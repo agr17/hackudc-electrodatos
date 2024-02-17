@@ -1,3 +1,12 @@
+<!--
+SPDX-FileCopyrightText: 2024 Manuel Corujo
+SPDX-FileCopyrightText: 2024 María López
+SPDX-FileCopyrightText: 2024 Pablo Boo
+SPDX-FileCopyrightText: 2024 Ángel Regueiro
+
+SPDX-License-Identifier: MIT
+-->
+
 # Contributor Covenant Code of Conduct
 
 ## Our Pledge

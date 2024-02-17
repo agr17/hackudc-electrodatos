@@ -1,3 +1,10 @@
+# SPDX-FileCopyrightText: 2024 Manuel Corujo
+# SPDX-FileCopyrightText: 2024 María López
+# SPDX-FileCopyrightText: 2024 Pablo Boo
+# SPDX-FileCopyrightText: 2024 Ángel Regueiro
+#
+# SPDX-License-Identifier: MIT
+
 import os
 import pandas as pd
 from pathlib import Path
