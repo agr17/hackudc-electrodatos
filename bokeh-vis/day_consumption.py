@@ -100,7 +100,11 @@ def consumption_hours(df):
     ax.set_theta_direction(-1)
     ax.set_yticklabels([])
 
-    plt.title(label="Consumo total por horas")
+    # legend with label Consumo
+    ax.bar(0, 0, color='skyblue', label='Consumo')
+    # legend in the max upper right corner
+    plt.legend(loc='upper right')
+    # plt.title(label="Consumo total por horas")
 
 
     # Show the plot
