@@ -2,3 +2,4 @@ pandas==2.2.0
 matplotlib==3.8.3
 ydata-profiling==4.6.4
 seaborn==0.12.2
+requests==2.28.1
