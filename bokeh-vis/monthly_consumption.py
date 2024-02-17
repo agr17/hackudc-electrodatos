@@ -44,7 +44,8 @@ class MonthlyConsumption:
         p = figure(
             title="Gráfica de Consumo",
             x_axis_label='Día',
-            sizing_mode="stretch_width"
+            sizing_mode="stretch_width",
+            toolbar_location=None,
         )
 
         # Consumo
