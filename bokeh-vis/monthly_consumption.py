@@ -1,6 +1,6 @@
 from bokeh.models import ColumnDataSource, Select, CheckboxGroup
 from bokeh.plotting import figure
-from bokeh.models import LinearAxis
+from bokeh.models import LinearAxis, Range1d
 from bokeh.layouts import row, column
 
 from src.constants import *
@@ -11,18 +11,23 @@ class MonthlyConsumption:
         super().__init__()
         self.df = df
 
+        self.price_range = Range1d(start=0, end=max(df['price']) + 0.1)
+
         self.months = MONTHS
         self.selected_month = self.months[0]
 
         self.options = {
             'Consumo': True,
             'Coste': True,
+            'Precio': False,
         }
 
         self.consumption_line = None
         self.consumption_circle = None
         self.cost_line = None
         self.cost_circle = None
+        self.price_line = None
+        self.price_circle = None
 
         self.source = ColumnDataSource(data=self._get_empty_source())
 
@@ -31,6 +36,7 @@ class MonthlyConsumption:
             'consumption': [],
             'cost': [],
             'time': [],
+            'price': [],
         }
 
     def _get_plot(self):
@@ -38,24 +44,29 @@ class MonthlyConsumption:
         p = figure(
             title="Gráfica de Consumo",
             x_axis_label='Día',
-            sizing_mode="stretch_width",
-            x_axis_type="datetime"
+            sizing_mode="stretch_width"
         )
 
         # Consumo
-        self.consumption_line = p.line(x='time', y='consumption', source=self.source, line_width=2, line_color=CONSUMPTION_COLOR)
+        self.consumption_line = p.line(x='time', y='consumption', source=self.source, line_width=2, line_color=CONSUMPTION_COLOR, legend_label="Consumo (kWh)")
         self.consumption_circle = p.circle(x='time', y='consumption', source=self.source, size=8, color=CONSUMPTION_COLOR)
 
         # Coste
-        self.cost_line = p.line(x='time', y='cost', source=self.source, line_width=2, line_color=COSTS_COLOR)
+        self.cost_line = p.line(x='time', y='cost', source=self.source, line_width=2, line_color=COSTS_COLOR, legend_label="Coste (€)")
         self.cost_circle = p.circle(x='time', y='cost', source=self.source, size=8, color=COSTS_COLOR)
 
-        # Twin y axis
-        p.yaxis.axis_label = "Gasto (€)"
-        p.yaxis.axis_label_text_color = COSTS_COLOR
+        # Price
+        self.price_line = p.line(x='time', y='price', source=self.source, line_width=2, line_color="green", y_range_name="price", legend_label="Precio (€/kWh)")
+        self.price_circle = p.circle(x='time', y='price', source=self.source, size=8, color="green", y_range_name="price")
+        self.price_line.visible = False
+        self.price_circle.visible = False
 
-        p.extra_y_ranges = {"consumption": p.y_range}
-        p.add_layout(LinearAxis(y_range_name="consumption", axis_label="Consumo (kWh)", axis_label_text_color=CONSUMPTION_COLOR), 'right')
+        # Twin y axis
+        p.yaxis.axis_label = "Gasto (€) y Consumo (kWh)"
+
+        # price axis with new y range
+        p.extra_y_ranges["price"] = self.price_range
+        p.add_layout(LinearAxis(y_range_name="price", axis_label="Precio (€/kWh)", axis_label_text_color="green"), 'right')
 
         return p
 
@@ -79,8 +90,8 @@ class MonthlyConsumption:
         df_copy = df.copy()
 
         df_copy['day'] = df_copy['datetime'].dt.to_period('D')
-        result = df_copy.groupby('day').agg({'consumo': 'sum', 'expenses': 'sum'}).reset_index()
-        result.columns = ['day', 'consumo', 'expenses']
+        result = df_copy.groupby('day').agg({'consumo': 'sum', 'expenses': 'sum', 'price': 'mean'}).reset_index()
+        result.columns = ['day', 'consumo', 'expenses', 'price']
         result['day'] = result['day'].dt.strftime('%d')
 
         return result
@@ -95,6 +106,7 @@ class MonthlyConsumption:
             'consumption': filtered_df['consumo'],
             'cost': filtered_df['expenses'],
             'time': filtered_df['day'],
+            'price': filtered_df['price'],
         }
 
     ### CHECKBOX ###
@@ -105,6 +117,8 @@ class MonthlyConsumption:
         self.consumption_circle.visible = self.options['Consumo']
         self.cost_line.visible = self.options['Coste']
         self.cost_circle.visible = self.options['Coste']
+        self.price_line.visible = self.options['Precio']
+        self.price_circle.visible = self.options['Precio']
 
     def _make_checkbox(self):
         checkbox = CheckboxGroup(labels=CHECKBOX_LABELS, active=[0, 1])
