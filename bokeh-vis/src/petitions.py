@@ -49,8 +49,7 @@ def read_data(start_date, end_date):
                     hours=int(hour)
                 )
                 costs.append([date, price])
-    df = pd.DataFrame(costs, columns=["datetime", "price"])
-    print(df.head())
+    return pd.DataFrame(costs, columns=["datetime", "price"])
 
 
 def read_costs():
@@ -72,4 +71,6 @@ def read_costs():
 
 
 if __name__ == "__main__":
-    read_costs()
+    args = parse_args()
+
+    read_data(args.start_date, args.end_date)

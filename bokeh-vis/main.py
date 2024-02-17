@@ -1,5 +1,5 @@
 from consumptions_visualizer import ConsumptionsVisualizer
-from utils.data import load_data
+from src.data import load_data
 
 from bokeh.plotting import curdoc
 from bokeh.layouts import column
