@@ -53,6 +53,6 @@ class GeneralBars:
 
         self.source.data = {
             'consumption': new_data['consumo'],
-            'cost': new_data['price'],
+            'cost': new_data['expenses'],
             'time': self.factors,
         }

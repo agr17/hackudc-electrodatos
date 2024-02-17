@@ -2,4 +2,4 @@ MONTHS = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agost
 CONSUMPTION_COLOR = "skyblue"
 COSTS_COLOR = "chocolate"
 
-CHECKBOX_LABELS = ['Consumo', 'Coste']
+CHECKBOX_LABELS = ['Consumo', 'Coste', 'Precio']
