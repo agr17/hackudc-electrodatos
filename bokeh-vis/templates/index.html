@@ -1,10 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <style>
-            body { background: #AFAFAF; }
-            .hero { width: 100%; text-align: center; }
-        </style>
         <meta charset="utf-8">
         {{ bokeh_css }}
         {{ bokeh_js }}
@@ -22,7 +18,7 @@
 
         <h1 class="fade">Has consumido de media este año <span class="valor"> {{ consumo_medio_input }} kWh/h.</span></h1>
         <h1 class="fade">Tu consumo medio es {{ comparacion }} a la media ({{ media_existente }} kWh/h).</h1>
-        
+
         <br><br>
         <h1 class="fade resaltado">Gráficas de consumo</h1>
         <div class="fade">
@@ -30,14 +26,22 @@
             {{ plot_script|indent(8) }}
         </div>
 
-        <footer class="fade">
-            <h2>Autores</h2>
-            <ul>
-                <li>Pablo</li>
-                <li>Manuel</li>
-                <li>María</li>
-                <li>Ángel</li>
-            </ul>
+        <footer class="fade footer">
+            <div class="wrapper-text">
+                <p>Aplicación Bokeh desarrollada en HackUDC 2024 para el reto propuesto por Gradiant, para más información visita nuestro repositorio de GitHub.</p>
+                <a href="https://github.com/agr17/hackudc-electrodatos">
+                    <img src="bokeh-vis/static/images/github_logo.png" alt="">
+                </a>
+            </div>
+            <div class="wrapper-authors">
+                <ul>
+                    <li>Pablo Boo Iglesias (<a href="mailto:pablo@example.com">pablo@example.com</a>)</li>
+                    <li>Manuel Corujo Muíña (<a href="mailto:manuel@example.com">manuel@example.com</a>)</li>
+                    <li>María López García (<a href="mailto:maria@example.com">maria@example.com</a>)</li>
+                    <li>Ángel Regueiro Feal (<a href="mailto:angel@example.com">angel@example.com</a>)</li>
+
+                </ul>
+            </div>
         </footer>
     </body>
 </html>

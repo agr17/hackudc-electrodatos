@@ -1,7 +1,38 @@
+:root {
+    /* Theme Colors */
+    --theme-primary: #6abf69;/*#1556ac;*/
+	--theme-primary-hover: #4d9e4d;
+
+	--theme-bg: #f8f9fa;
+	--theme-bg-accent: #eef1f3;
+    --theme-bg-accent-2: #ccc;
+
+    --text-whitebg: #1F1F1F; /* for text with white background */
+
+    /* Theme Fonts */
+	--theme-font-family: Arial, 'Roboto Serif', Georgia, serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--theme-font-family);
+}
+
+p { /* por accesibilidad */
+    line-height: 1.5;
+}
+
+.color-primary {
+    color: var(--theme-primary);
+}
+
+
 /* Estilos generales */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f8f9fa; /* Fondo más claro */
+    /* font-family: Arial, sans-serif; */
+    /* background-color: var(--theme-bg); */
     color: #333333;
     margin: 0; /* Eliminar margen predeterminado */
 }
@@ -22,13 +53,6 @@ h1, h2 {
 /* Estilos para el contenido */
 .content {
     padding: 20px; /* Espaciado interno */
-}
-
-/* Estilos para el pie de página */
-footer {
-    background-color: #f8f9fa; /* Fondo más claro */
-    padding: 20px;
-    text-align: center; /* Centrar texto */
 }
 
 /* Estilos para la lista */
@@ -52,23 +76,7 @@ a:hover {
     text-decoration: underline; /* Subrayar en el hover */
 }
 
-/* Estilos para la tabla */
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-table th, table td {
-    padding: 8px;
-    border-bottom: 1px solid #cccccc;
-}
-
-table th {
-    background-color: #f0f0f0;
-    text-align: left;
-}
-
-/* Fade in */
+/***************** Fade in *****************/
 .fade {
     opacity: 0;
     transition: opacity 2.5s ease-in-out;
@@ -79,8 +87,46 @@ table th {
 }
 
 .resaltado {
-    color: #6abf69; /* Tonos verdosos claros/pastel */
-    font-family: 'Roboto', sans-serif; /* Tipografía especial y legible */
+    color: var(--theme-primary); /* Tonos verdosos claros/pastel */
+    /* font-family: 'Roboto', sans-serif; Tipografía especial y legible */
     font-size: 1.2em; /* Tamaño de fuente */
     font-weight: bold; /* Fuente en negrita */
+}
+
+/***************** Footer *****************/
+
+footer {
+    height: 100%;
+    width: 100%;
+    padding: 3em 6em;
+    background-color: var(--theme-bg-accent);
+    border-radius: 3em 3em 0 0;
+
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.wrapper-text {
+    text-align: center;
+    /* vertical center */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper-text img {
+    height: 6em;
+}
+
+.wrapper-authors {
+    /* vertical center */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0;
+    margin-left: 6em;
+    text-align: left;
 }
