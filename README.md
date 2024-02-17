@@ -76,7 +76,7 @@ Here are several ways you can contribute to the Electrodatos project:
 - Improve our documentation.
 
 ## License
-The MIT License (MIT)
+The MIT License (MIT).
 
 [hack-udc-electrodatos]: <https://github.com/agr17/hackudc-electrodatos>
 [git-repo-url]: <https://github.com/agr17/hackudc-electrodatos.git>
