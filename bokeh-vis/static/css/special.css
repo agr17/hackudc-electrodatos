@@ -130,3 +130,21 @@ footer {
     margin-left: 6em;
     text-align: left;
 }
+
+/***************** Bokeh *****************/
+
+.wrapper-bokeh {
+    margin: 0 10%;
+}
+
+/***************** hour-data *****************/
+
+.hour-data {
+    margin: 0 10%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.hour-data img {
+    width: 90%;
+}

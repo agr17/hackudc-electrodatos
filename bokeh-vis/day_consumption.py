@@ -57,17 +57,13 @@ min_day = df0_sum_day_consumption.loc[df0_sum_day_consumption['consumo'].idxmin(
 print("El día ", min_day.name[2], "/", min_day.name[1], "/", min_day.name[0], " el consumo fue ", min_day.min(), " KW/h")
 
 
-# Hora donde mas se ha consumido
-
-df_hora_mas_consumido = pd.DataFrame(df.groupby(df['datetime'].dt.hour)['consumo'].mean())
-df_hora_mas_consumido = df_hora_mas_consumido.reset_index()
-df_hora_mas_consumido = df_hora_mas_consumido.rename(columns={"consumo": "consumption", "datetime": "hour"})
-print(df_hora_mas_consumido)
-
-
 # Consumo por horas
-def consumption_hours():
-    upperLimit = 100
+def consumption_hours(df):
+
+    df_hora_mas_consumido = pd.DataFrame(df.groupby(df['datetime'].dt.hour)['consumo'].mean())
+    df_hora_mas_consumido = df_hora_mas_consumido.reset_index()
+    df_hora_mas_consumido = df_hora_mas_consumido.rename(columns={"consumo": "consumption", "datetime": "hour"})
+
     lowerLimit = 0
 
     fig, ax = plt.subplots(figsize=(8, 8), subplot_kw=dict(polar=True))
@@ -87,12 +83,12 @@ def consumption_hours():
 
 
     # Plot data
-    ax.bar(x=angles, 
-        height=heights, 
-        width=width, 
-        color='skyblue', 
+    ax.bar(x=angles,
+        height=heights,
+        width=width,
+        color='skyblue',
         bottom=lowerLimit,
-        linewidth=2, 
+        linewidth=2,
         edgecolor="white"
         )
 
@@ -110,7 +106,3 @@ def consumption_hours():
     # Show the plot
     #plt.show()
     plt.savefig('bokeh-vis/static/images/circular_barplot_hours.png')
-
-
-
-
