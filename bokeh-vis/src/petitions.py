@@ -4,7 +4,6 @@ import os
 
 import pandas as pd
 import pvpc
-import requests
 
 FILES_PATH = "./data/marginalpdbc_2022/"
 
@@ -41,6 +40,8 @@ def read_data(start_date, end_date):
                 if not 1 <= i <= 24:
                     continue
                 line = line[:-2].split(";")
+                if len(line) != 6: # ignore lines with wrong format
+                    continue
                 year = line[0]
                 month = line[1]
                 day = line[2]
@@ -51,6 +52,7 @@ def read_data(start_date, end_date):
                 )
                 costs.append([date, price])
     df = pd.DataFrame(costs, columns=["datetime", "price"])
+
     return df
 
 
@@ -71,7 +73,6 @@ def get_costs_from_api(start_date, end_date):
     df = pd.DataFrame(costs, columns=["datetime", "cost"])
     df.to_csv(f"./data/{start_date.year}_costs.csv", index=False)
     return df
-
 
 
 def read_costs(start_date, end_date):
