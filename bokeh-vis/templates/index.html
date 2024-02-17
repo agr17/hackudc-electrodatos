@@ -8,19 +8,21 @@
         <script src="/bokeh-vis/static/js/special.js"></script>
     </head>
     <body>
-        <img src="bokeh-vis/static/images/electrodatos-high-resolution-logo.png" class="logo">
+        <section style="height: 100vh;">
+           <img src="bokeh-vis/static/images/electrodatos-high-resolution-logo.png" class="logo">
 
-        <h1 class="fade resaltado">A continuación puedes ver algunos de los datos más destacados de tu factura eléctrica en el año {{ year }}...</h1>
+            <h1 class="fade resaltado">A continuación puedes ver algunos de los datos más destacados de tu factura eléctrica en el año {{ year }}...</h1>
 
-        <h1 class="fade">Estás en el top <span class="valor">{{ porcentaje_top }}</span>% de la gente que más electricidad ha consumido este año.</h1>
+            <h1 class="fade">Estás en el top <span class="valor">{{ porcentaje_top }}</span>% de la gente que más electricidad ha consumido este año.</h1>
 
-        <h1 class="fade">Has consumido de media <span class="valor">{{ consumo_medio_input }}</span>kWh/h.</h1>
-        <h1 class="fade">Tu consumo medio es {{ comparacion }} a la media (<span class="valor">{{ media_existente }}</span> kWh/h).</h1>
+            <h1 class="fade">Has consumido de media <span class="valor">{{ consumo_medio_input }}</span>kWh/h.</h1>
+            <h1 class="fade">Tu consumo medio es {{ comparacion }} a la media (<span class="valor">{{ media_existente }}</span> kWh/h).</h1>
 
-        <h1 class="fade">En total este año has gastado <span class="valor">{{ gasto_total }}</span> € (<span class="valor">{{ gasto_media }}</span> € cada día).</h1>
+            <h1 class="fade">En total este año has gastado <span class="valor">{{ gasto_total }}</span> € (<span class="valor">{{ gasto_media }}</span> € cada día).</h1> 
 
-        <br><br>
-        <h1 class="fade resaltado">Por último también puedes ver una serie de gráficas con datos sobre tu consumo y tu gasto.</h1>
+            <h1 class="fade resaltado">Por último también puedes ver una serie de gráficas con datos sobre tu consumo y tu gasto.</h1>
+        </section>
+        
         <div class="fade">
             {{ plot_div|indent(8) }}
             {{ plot_script|indent(8) }}
