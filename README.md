@@ -61,26 +61,11 @@ And of course Electrodatos itself is open source with a [public repository](http
 
 ## Development
 
-Want to contribute? Great!
+Here are several ways you can contribute to the Electrodatos project:
 
-### Git-Flow
-
-Carggregator uses git-flow to structure its repository! Open your favorite Terminal and run these commands.
-
-Initialize git-flow:
-```sh
-bash .bin/git_gitflow.sh init
-```
-
-Start a new feature:
-```sh
-git flow feature start Issue-X
-```
-
-Finish a feature:
-```sh
-git flow feature finish Issue-X
-```
+- Propose Pull Requests (PRs) to rectify bugs or introduce new features.
+- Offer feedback and report bugs concerning the software or documentation.
+- Improve our documentation.
 
 ## Instalation
 
@@ -88,10 +73,7 @@ git flow feature finish Issue-X
 pip install -r requirements.txt
 ````
 
-
 ## Usage
-
-### Bokeh
 
 ````
 bokeh serve bokeh-vis --show --args .\data\cups\electrodatos_0.csv 2022
