@@ -1,6 +1,7 @@
 from monthly_consumption import MonthlyConsumption
 from general_bars import GeneralBars
 from day_consumption_visualizer import DayConsumptionVisualizer
+from day_consumption import consumption_hours
 import src.petitions as cost_data
 import src.data as consumption_data
 
@@ -9,12 +10,12 @@ from bokeh.plotting import curdoc
 from bokeh.layouts import column
 
 import pandas as pd
-
 import sys
-
 
 from top_percentage_consumers import calcular_porcentaje_top
 from average_consume import calcular_average_consume
+
+
 
 def _data_to_monthly(df):
     df_copy = df.copy()
@@ -53,6 +54,9 @@ df_monthly = _data_to_monthly(df)
 df_monthly = df_monthly[df_monthly['month'] < "2023-01"]
 
 df_weekday = _mean_consumption_by_day_of_week(df)
+
+# Use matplotlib to get the consumption by hours
+consumption_hours(df)
 
 # Create visualizers
 
