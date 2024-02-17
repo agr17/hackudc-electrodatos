@@ -73,19 +73,26 @@ def get_costs_from_api(start_date, end_date):
     return df
 
 
+
 def read_costs(start_date, end_date):
     start_datetime = dt.datetime.strptime(start_date, "%Y-%m-%d")
     end_datetime = dt.datetime.strptime(end_date, "%Y-%m-%d")
-    year = start_datetime.year
-    if start_datetime >= dt.datetime(year, 1, 1) and end_datetime <= dt.datetime(
-        year, 12, 31
-    ):
-        csv = pd.read_csv(f"./data/{year}_costs.csv")
+    start_year = start_datetime.year
+    end_year = end_datetime.year
 
-        # Filter data between two dates
-        filtered_df = csv.loc[
-            (csv["datetime"] >= start_datetime.strftime("%Y-%m-%d %H:%M:%S"))
-            & (csv["datetime"] <= end_datetime.strftime("%Y-%m-%d %H:%M:%S"))
+    if start_datetime >= dt.datetime(2021, 6, 1) and end_datetime <= dt.datetime(2024, 2, 17):
+        dfs = []
+        for year in range(start_year, end_year + 1):
+            file_path = f"./data/{year}_costs.csv"
+            if os.path.exists(file_path):
+                dfs.append(pd.read_csv(file_path))
+            else:
+                return get_costs_from_api(start_date, end_date)
+
+        df = pd.concat(dfs)
+        filtered_df = df.loc[
+            (df["datetime"] >= start_datetime.strftime("%Y-%m-%d %H:%M:%S"))
+            & (df["datetime"] <= end_datetime.strftime("%Y-%m-%d %H:%M:%S"))
         ]
         return filtered_df
     else:
