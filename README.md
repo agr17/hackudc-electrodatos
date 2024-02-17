@@ -41,12 +41,20 @@ Electrodatos is an electric bill visualizer.
 
 ## TOC
 
+- [Installation and usage](#installation-and-usage)
 - [Tech](#tech)
 - [Development](#development)
-  * [Git-Flow](#git-flow)
-- [Usage](#usage)
 - [License](#license)
 
+## Installation and usage
+
+````
+pip install -r requirements.txt
+````
+
+````
+bokeh serve bokeh-vis --show --args .\data\cups\electrodatos_0.csv 2022
+````
 
 ## Tech
 
@@ -66,19 +74,6 @@ Here are several ways you can contribute to the Electrodatos project:
 - Propose Pull Requests (PRs) to rectify bugs or introduce new features.
 - Offer feedback and report bugs concerning the software or documentation.
 - Improve our documentation.
-
-## Instalation
-
-````
-pip install -r requirements.txt
-````
-
-## Usage
-
-````
-bokeh serve bokeh-vis --show --args .\data\cups\electrodatos_0.csv 2022
-````
-
 
 ## License
 The MIT License (MIT)
