@@ -1,5 +1,6 @@
-from bokeh.models import ColumnDataSource, Select
+from bokeh.models import ColumnDataSource, Select, HoverTool
 from bokeh.plotting import figure
+from bokeh.models import LinearAxis
 from bokeh.layouts import row
 
 from constants import *
@@ -18,27 +19,33 @@ class ConsumptionsVisualizer:
     def _get_empty_source(self):
         return {
             'consumption': [],
+            'cost': [],
             'time': [],
         }
 
     def _get_plot(self):
 
-        tooltips = [
-            ("Día", "@time"),
-            ("Consumo ", "$y KWh"),
-        ]
-
         p = figure(
             title="Gráfica de Consumo",
             x_axis_label='Día',
-            y_axis_label='Consumo (KWh)',
             sizing_mode="stretch_width",
-            x_axis_type="datetime",
-            tooltips=tooltips
+            x_axis_type="datetime"
         )
 
+        # Consumo
         p.line(x='time', y='consumption', source=self.source, line_width=2, line_color=CONSUMPTION_COLOR)
         p.circle(x='time', y='consumption', source=self.source, size=8, color=CONSUMPTION_COLOR)
+
+        # Coste
+        p.line(x='time', y='cost', source=self.source, line_width=2, line_color=COSTS_COLOR)
+        p.circle(x='time', y='cost', source=self.source, size=8, color=COSTS_COLOR)
+
+        # Twin y axis
+        p.yaxis.axis_label = "Gasto (€)"
+        p.yaxis.axis_label_text_color = COSTS_COLOR
+
+        p.extra_y_ranges = {"consumption": p.y_range}
+        p.add_layout(LinearAxis(y_range_name="consumption", axis_label="Consumo (kWh)", axis_label_text_color=CONSUMPTION_COLOR), 'right')
 
         return p
 
@@ -62,8 +69,8 @@ class ConsumptionsVisualizer:
         df_copy = df.copy()
 
         df_copy['day'] = df_copy['datetime'].dt.to_period('D')
-        result = df_copy.groupby('day').agg({'consumo': 'sum'}).reset_index()
-        result.columns = ['day', 'consumo']
+        result = df_copy.groupby('day').agg({'consumo': 'sum', 'price': 'sum'}).reset_index()
+        result.columns = ['day', 'consumo', 'price']
         result['day'] = result['day'].dt.strftime('%d')
 
         return result
@@ -76,6 +83,7 @@ class ConsumptionsVisualizer:
 
         self.source.data = {
             'consumption': filtered_df['consumo'],
+            'cost': filtered_df['price'],
             'time': filtered_df['day'],
         }
 
