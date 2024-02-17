@@ -69,15 +69,36 @@ def get_costs_from_api(start_date, end_date):
             costs.append([date, cost])
 
     df = pd.DataFrame(costs, columns=["datetime", "cost"])
-    df.to_csv("./costs.csv", index=False)
+    df.to_csv(f"./data/{start_date.year}_costs.csv", index=False)
     return df
+
+
+def read_costs(start_date, end_date):
+    start_datetime = dt.datetime.strptime(start_date, "%Y-%m-%d")
+    end_datetime = dt.datetime.strptime(end_date, "%Y-%m-%d")
+    year = start_datetime.year
+    if start_datetime >= dt.datetime(year, 1, 1) and end_datetime <= dt.datetime(
+        year, 12, 31
+    ):
+        csv = pd.read_csv(f"./data/{year}_costs.csv")
+
+        # Filter data between two dates
+        filtered_df = csv.loc[
+            (csv["datetime"] >= start_datetime.strftime("%Y-%m-%d %H:%M:%S"))
+            & (csv["datetime"] <= end_datetime.strftime("%Y-%m-%d %H:%M:%S"))
+        ]
+        return filtered_df
+    else:
+        return get_costs_from_api(start_date, end_date)
 
 
 if __name__ == "__main__":
     args = _parse_args()
 
-    read_data(args.start_date, args.end_date)
-    get_costs_from_api(args.start_date, args.end_date)
+    df = read_costs(args.start_date, args.end_date)
+    print(df.head())
+    # read_data(args.start_date, args.end_date)
+    # get_costs_from_api(args.start_date, args.end_date)
 
     # url = "https://api.esios.ree.es/archives/3183/download_json"
 
