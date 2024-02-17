@@ -73,10 +73,24 @@ consumptions_plot = consumptions_visualizer.get_layout()
 
 weekday_plot = consumption_vis.get_plot()
 
+# H2 titles between the plots
+
+style = "style='font-size: 1.5rem;'"
+
+bars_plot_title = Div(text=f"<h2 {style}>Consumo mensual</h2>")
+consumptions_plot_title = Div(text=f"<h2 {style}>Consumo mensual</h2>")
+weekday_plot_title = Div(text=f"<h2 {style}>Consumo por día de la semana</h2>")
+
 # Create the layout
 
-layout = column(bars_plot, consumptions_plot, weekday_plot, 
-                sizing_mode="stretch_width")
+layout = column(
+    bars_plot_title,
+    bars_plot,
+    consumptions_plot_title,
+    consumptions_plot,
+    weekday_plot_title,
+    weekday_plot,
+    sizing_mode="stretch_width")
 
 curdoc().add_root(layout)
 
