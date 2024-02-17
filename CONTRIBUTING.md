@@ -1,4 +1,5 @@
-All work must have an __associated Issue__, in order to be able to trace it back.
+If you have made it this far, first of all, thank you!
+In this project all work must have an __associated Issue__, in order to be able to trace it back.
 
 1. Initialize git-flow:
 ```sh
