@@ -2,7 +2,7 @@ from bokeh.models import ColumnDataSource, FactorRange, HoverTool
 from bokeh.plotting import figure
 from bokeh.transform import dodge
 from bokeh.models import LinearAxis
-from constants import *
+from src.constants import *
 
 class GeneralBars:
     def __init__(self):

@@ -1,4 +1,4 @@
-from consumptions_visualizer import ConsumptionsVisualizer
+from monthly_consumption import MonthlyConsumption
 from general_bars import GeneralBars
 import src.petitions as cost_data
 import src.data as consumption_data
@@ -45,7 +45,7 @@ df_monthly = df_monthly[df_monthly['month'] < "2023-01"]
 general_bars = GeneralBars()
 general_bars.update_source(df_monthly)
 
-consumptions_visualizer = ConsumptionsVisualizer(df)
+consumptions_visualizer = MonthlyConsumption(df)
 consumptions_visualizer.update_source()
 
 # Get the plots

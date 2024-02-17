@@ -3,9 +3,9 @@ from bokeh.plotting import figure
 from bokeh.models import LinearAxis
 from bokeh.layouts import row, column
 
-from constants import *
+from src.constants import *
 
-class ConsumptionsVisualizer:
+class MonthlyConsumption:
 
     def __init__(self, df):
         super().__init__()
