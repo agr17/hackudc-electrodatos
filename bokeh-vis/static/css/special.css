@@ -93,6 +93,16 @@ a:hover {
     font-weight: bold; /* Fuente en negrita */
 }
 
+/***************** Logo *******************/
+
+.logo {
+    width: 50%;
+    height: 20vh;
+    display: block;
+    margin: 5vh auto;
+}
+
+
 /***************** Footer *****************/
 
 footer {

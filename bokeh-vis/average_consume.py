@@ -2,7 +2,7 @@ import pandas as pd
 import os
 from pathlib import Path
 
-def calcular_average_consume(csv_path, year):
+def calcular_average_consume(dataframe, csv_path, year):
     # Directorio donde se encuentran los archivos CSV de los CUPS
     data_directory = Path("./data/cups")
 
@@ -35,10 +35,10 @@ def calcular_average_consume(csv_path, year):
     media_final = sum(consumo_medio_por_cups) / len(consumo_medio_por_cups)
 
     # Mostrar el consumo medio por CUPS y la media final
-    for cups_id, consumo_medio in enumerate(consumo_medio_por_cups):
-        print(f"CUPS {cups_id}: Consumo medio = {consumo_medio:.2f} kWh/h")
+    # for cups_id, consumo_medio in enumerate(consumo_medio_por_cups):
+    #     print(f"CUPS {cups_id}: Consumo medio = {consumo_medio:.2f} kWh/h")
 
-    print(f"Media Final de todos los CUPS: {media_final:.2f} kWh/h")
+    # print(f"Media Final de todos los CUPS: {media_final:.2f} kWh/h")
 
 
     # Calculo media del archivo del usuario
@@ -55,12 +55,19 @@ def calcular_average_consume(csv_path, year):
     else:
         comparacion = "igual"
 
-    print("\n\nMÉTRICA WRAPPED:\n")
-    print(f"De media el resto de usuarios ha consumido: {media_final:.2f} kWh/h")
-    print(f"Tu consumo medio es {comparacion} a la media ({consumo_medio_input:.2f} kWh/h).")
+    # print("\n\nMÉTRICA WRAPPED:\n")
+    # print(f"De media el resto de usuarios ha consumido: {media_final:.2f} kWh/h")
+    # print(f"Tu consumo medio es {comparacion} a la media ({consumo_medio_input:.2f} kWh/h).")
+        
+    # Cálculo gastos anuales
+    print(dataframe)
+    gasto_total = dataframe['expenses'].sum()
+    gasto_media = dataframe['expenses'].mean()
 
     return {
         "media_existente": "{:.2f}".format(media_final),
         "consumo_medio_input": "{:.2f}".format(consumo_medio_input),
-        "comparacion": comparacion
+        "comparacion": comparacion,
+        "gasto_total": "{:.2f}".format(gasto_total),
+        "gasto_media": "{:.2f}".format(gasto_media)
     }
