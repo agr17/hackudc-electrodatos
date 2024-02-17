@@ -86,7 +86,9 @@ curdoc().template_variables["porcentaje_top"] = porcentaje_top
 curdoc().template_variables["year"] = year
 
 # Obtener el consumo medio del año
-resultados = calcular_average_consume(csv_path, year)
+resultados = calcular_average_consume(df, csv_path, year)
 curdoc().template_variables["media_existente"] = resultados["media_existente"]
 curdoc().template_variables["consumo_medio_input"] = resultados["consumo_medio_input"]
 curdoc().template_variables["comparacion"] = resultados["comparacion"]
+curdoc().template_variables["gasto_total"] = resultados["gasto_total"]
+curdoc().template_variables["gasto_media"] = resultados["gasto_media"]

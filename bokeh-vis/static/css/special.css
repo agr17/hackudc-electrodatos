@@ -86,11 +86,20 @@ a:hover {
     opacity: 1;
 }
 
+/***************** First Section ***********/
+
 .resaltado {
     color: var(--theme-primary); /* Tonos verdosos claros/pastel */
     /* font-family: 'Roboto', sans-serif; Tipografía especial y legible */
     font-size: 1.2em; /* Tamaño de fuente */
     font-weight: bold; /* Fuente en negrita */
+}
+
+.logo {
+    width: 50%;
+    height: 20vh;
+    display: block;
+    margin: 5vh auto;
 }
 
 /***************** Footer *****************/
