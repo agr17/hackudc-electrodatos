@@ -30,9 +30,7 @@ SPDX-License-Identifier: MIT
     </a>
 </p>
 
-This work is licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License][cc-by-sa].
-
-[![CC BY-SA 4.0][cc-by-sa-image]][cc-by-sa]
+This work is licensed under a [MIT license](https://opensource.org/license/mit/).
 
 [cc-by-sa]: http://creativecommons.org/licenses/by-sa/4.0/
 [cc-by-sa-image]: https://licensebuttons.net/l/by-sa/4.0/88x31.png
@@ -101,9 +99,7 @@ bokeh serve bokeh-vis --show --args .\data\cups\electrodatos_0.csv
 
 
 ## License
-
-GNU General Public License v3.0
-
+The MIT License (MIT)
 
 [hack-udc-electrodatos]: <https://github.com/agr17/hackudc-electrodatos>
 [git-repo-url]: <https://github.com/agr17/hackudc-electrodatos.git>
