@@ -77,3 +77,10 @@ table th {
 .fade.visible {
     opacity: 1;
 }
+
+.resaltado {
+    color: #6abf69; /* Tonos verdosos claros/pastel */
+    font-family: 'Roboto', sans-serif; /* Tipografía especial y legible */
+    font-size: 1.2em; /* Tamaño de fuente */
+    font-weight: bold; /* Fuente en negrita */
+}
