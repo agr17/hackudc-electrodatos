@@ -1,9 +1,10 @@
 import pandas as pd
 import os
+from pathlib import Path
 
 def calcular_porcentaje_top(csv_path, year):
     # Directorio donde se encuentran los archivos CSV de los CUPS
-    data_directory = ".\data\cups"
+    data_directory = Path("./data/cups")
 
     # Obtener la lista de archivos en el directorio
     archivos_cups = os.listdir(data_directory)

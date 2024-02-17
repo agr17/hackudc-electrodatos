@@ -1,12 +1,13 @@
 import os
 import pandas as pd
+from pathlib import Path
 
 def calcular_average_consume_by_hour(year):
     # Lista para almacenar los resultados de cada CUPS
     consumo_medio_por_hora = []
 
     # Directorio donde se encuentran los archivos CSV de los CUPS
-    data_directory = ".\data\cups"
+    data_directory = Path("./data/cups")
     
     # Obtener la lista de archivos en el directorio
     archivos_cups = os.listdir(data_directory)
