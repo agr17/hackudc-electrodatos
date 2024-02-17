@@ -5,8 +5,6 @@ import os
 
 import src.pvpc as pvpc
 
-FILES_PATH = "./data/marginalpdbc_2022/"
-
 
 def _parse_args():
     # Parse the command-line arguments (start date and end date)
@@ -24,36 +22,6 @@ def _parse_args():
         help="End date in the format YYYY-MM-DD",
     )
     return parser.parse_args()
-
-
-def read_data(start_date, end_date):
-    start_date = start_date.replace("-", "")
-    end_date = end_date.replace("-", "")
-    costs = []
-    for file in os.listdir(FILES_PATH):
-        if not start_date <= file.split("_")[1][:-2] <= end_date:
-            continue
-
-        with open(os.path.join(FILES_PATH, file), "r") as f:
-            lines = f.readlines()
-            for i, line in enumerate(lines):
-                if not 1 <= i <= 24:
-                    continue
-                line = line[:-2].split(";")
-                if len(line) != 6: # ignore lines with wrong format
-                    continue
-                year = line[0]
-                month = line[1]
-                day = line[2]
-                hour = line[3]
-                price = line[4]
-                date = dt.datetime(int(year), int(month), int(day)) + dt.timedelta(
-                    hours=int(hour)
-                )
-                costs.append([date, price])
-    df = pd.DataFrame(costs, columns=["datetime", "price"])
-
-    return df
 
 
 def get_costs_from_api(start_date, end_date):
@@ -81,7 +49,9 @@ def read_costs(start_date, end_date):
     start_year = start_datetime.year
     end_year = end_datetime.year
 
-    if start_datetime >= dt.datetime(2021, 6, 1) and end_datetime <= dt.datetime(2024, 2, 17):
+    if start_datetime >= dt.datetime(2021, 6, 1) and end_datetime <= dt.datetime(
+        2024, 2, 17
+    ):
         dfs = []
         for year in range(start_year, end_year + 1):
             file_path = f"./data/{year}_costs.csv"
