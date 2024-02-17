@@ -1,8 +1,8 @@
-# hackudc-electrodatos
+# HackUDC: electrodatos
 
 <p align="center">
     <a href="https://github.com/agr17/hackudc-electrodatos/" alt="hackudc-electrodatos">
-        <img src="https://github.com/agr17/hackudc-electrodatos/blob/main/assets/electrodatos-high-resolution-logo.png"/>
+        <img src="https://github.com/agr17/hackudc-electrodatos/blob/main/assets/electrodatos-high-resolution-logo.svg.png"/>
     </a>
 </p>
 
@@ -38,7 +38,6 @@ Electrodatos is an electric bill visualizer.
 - [Development](#development)
   * [GitHub](#github)
 - [Usage](#usage)
-- [Demo](#demo)
 - [License](#license)
 
 
@@ -47,20 +46,27 @@ Electrodatos is an electric bill visualizer.
 Electrodatos uses a number of open source projects to work properly:
 
 - [Black] - An uncompromising Python code formatter.
-- [Bokeh] - A library used to make highly interactive graphs and visualizations.
+- [Bokeh] - A library used to make interactive data visualization in the browser.
+- [Pandas] - A flexible and powerful data analysis / manipulation library for Python.
 - [pvpc] - A library that provides information about PVPC costs in Spain from the REE API.
 
-And of course Electrodatos itself is open source with a [public repository][hackudc-electrodatos] on GitHub.
+And of course Electrodatos itself is open source with a [public repository](https://github.com/agr17/hackudc-electrodatos) on GitHub.
 
 ## Development
 
 Want to contribute? Great!
+
+### GitHub
+
+In addition to a repository, GitHub offers a range of features, including a Kanban board for project planning. We have a simple approach where we use issues to plan new features. We create branches from these issues and merge them through pull requests. There are no specific requirements for naming or other related aspects, simply use English.
+
 
 ## Instalation
 
 ````
 pip install -r requirements.txt
 ````
+
 
 ## Usage
 
@@ -81,4 +87,5 @@ GNU General Public License v3.0
 
 [Black]: <https://github.com/psf/black>
 [Bokeh]: <https://github.com/bokeh/bokeh>
+[Pandas]: <https://github.com/pandas-dev/pandas>
 [pvpc]: <https://github.com/David-Lor/python-pvpc>
