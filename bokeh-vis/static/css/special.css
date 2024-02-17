@@ -43,7 +43,7 @@ body {
 }
 
 /* Estilos para los encabezados (h1, h2) */
-h1, h2 {
+h1 {
     margin-top: 0; /* Eliminar margen superior predeterminado */
     margin-bottom: 20px; /* Espaciado inferior */
     font-weight: bold; /* Fuente en negrita */
@@ -154,6 +154,18 @@ footer {
 }
 
 /***************** hour-data *****************/
+
+.wrapper-img {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.h2-img {
+    text-align: center;
+    margin-bottom: 0;
+}
 
 .hour-data {
     margin: 0 10%;
