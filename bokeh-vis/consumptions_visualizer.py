@@ -1,7 +1,7 @@
-from bokeh.models import ColumnDataSource, Select, HoverTool
+from bokeh.models import ColumnDataSource, Select, CheckboxGroup
 from bokeh.plotting import figure
 from bokeh.models import LinearAxis
-from bokeh.layouts import row
+from bokeh.layouts import row, column
 
 from constants import *
 
@@ -13,6 +13,16 @@ class ConsumptionsVisualizer:
 
         self.months = MONTHS
         self.selected_month = self.months[0]
+
+        self.options = {
+            'Consumo': True,
+            'Coste': True,
+        }
+
+        self.consumption_line = None
+        self.consumption_circle = None
+        self.cost_line = None
+        self.cost_circle = None
 
         self.source = ColumnDataSource(data=self._get_empty_source())
 
@@ -33,12 +43,12 @@ class ConsumptionsVisualizer:
         )
 
         # Consumo
-        p.line(x='time', y='consumption', source=self.source, line_width=2, line_color=CONSUMPTION_COLOR)
-        p.circle(x='time', y='consumption', source=self.source, size=8, color=CONSUMPTION_COLOR)
+        self.consumption_line = p.line(x='time', y='consumption', source=self.source, line_width=2, line_color=CONSUMPTION_COLOR)
+        self.consumption_circle = p.circle(x='time', y='consumption', source=self.source, size=8, color=CONSUMPTION_COLOR)
 
         # Coste
-        p.line(x='time', y='cost', source=self.source, line_width=2, line_color=COSTS_COLOR)
-        p.circle(x='time', y='cost', source=self.source, size=8, color=COSTS_COLOR)
+        self.cost_line = p.line(x='time', y='cost', source=self.source, line_width=2, line_color=COSTS_COLOR)
+        self.cost_circle = p.circle(x='time', y='cost', source=self.source, size=8, color=COSTS_COLOR)
 
         # Twin y axis
         p.yaxis.axis_label = "Gasto (€)"
@@ -87,8 +97,26 @@ class ConsumptionsVisualizer:
             'time': filtered_df['day'],
         }
 
+    ### CHECKBOX ###
+    def _checkbox_callback(self, attr, old, new):
+        self.options = {CHECKBOX_LABELS[i]: i in new for i in range(len(CHECKBOX_LABELS))}
+
+        self.consumption_line.visible = self.options['Consumo']
+        self.consumption_circle.visible = self.options['Consumo']
+        self.cost_line.visible = self.options['Coste']
+        self.cost_circle.visible = self.options['Coste']
+
+    def _make_checkbox(self):
+        checkbox = CheckboxGroup(labels=CHECKBOX_LABELS, active=[0, 1])
+        checkbox.on_change('active', self._checkbox_callback)
+        return checkbox
+
     ### GET PLOT ###
     def get_layout(self):
         select_month = self._make_select_month()
+        checkbox = self._make_checkbox()
+
+        visualizar_options = column(select_month, checkbox)
+
         plot = self._get_plot()
-        return row(select_month, plot, sizing_mode="stretch_width")
+        return row(visualizar_options, plot, sizing_mode="stretch_width")
