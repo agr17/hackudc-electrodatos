@@ -5,22 +5,22 @@ from bokeh.models import LinearAxis
 from src.constants import *
 
 class GeneralBars:
-    def __init__(self):
+    def __init__(self, df):
         super().__init__()
-        self.source = ColumnDataSource(data=self._get_empty_source())
+
         self.factors = [
             ("Q1", "Enero"), ("Q1", "Febrero"), ("Q1", "Marzo"),
             ("Q2", "Abril"), ("Q2", "Mayo"), ("Q2", "Junio"),
             ("Q3", "Julio"), ("Q3", "Agosto"), ("Q3", "Septiembre"),
             ("Q4", "Octubre"), ("Q4", "Noviembre"), ("Q4", "Diciembre"),
         ]
+        self.factors = self.factors[:len(df)]
 
-    def _get_empty_source(self):
-        return {
-            'consumption': [],
-            'cost': [],
-            'time': [],
-        }
+        self.source = ColumnDataSource(data={
+            'consumption': df['consumo'],
+            'cost': df['expenses'],
+            'time': self.factors,
+        })
 
     def get_plot(self):
 
@@ -48,11 +48,3 @@ class GeneralBars:
         p.add_tools(consumption_tool, cost_tool)
 
         return p
-
-    def update_source(self, new_data):
-
-        self.source.data = {
-            'consumption': new_data['consumo'],
-            'cost': new_data['expenses'],
-            'time': self.factors,
-        }

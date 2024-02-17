@@ -39,7 +39,7 @@ if not consumption_data.check_year(df_consumption, year):
     print(f"Year {year} not found in the data")
     sys.exit(1)
 
-df_costs = cost_data.read_costs(f"{year}-01-01", f"{year}-12-31")
+df_costs = cost_data.read_costs(f"{year}-06-01" if year == "2021" else f"{year}-01-01", f"{year}-12-31") # TODO: retrive data from 2021 completely
 
 df = consumption_data.unify_data(df_consumption, df_costs)
 df.dropna(inplace=True) # TODO: esto es temporal para filtrar rapido
@@ -47,7 +47,6 @@ df.dropna(inplace=True) # TODO: esto es temporal para filtrar rapido
 df = consumption_data.calculate_expenses(df)
 
 df_monthly = consumption_data.data_to_monthly(df)
-df_monthly = df_monthly[df_monthly['month'] < "2023-01"]
 
 df_weekday = _mean_consumption_by_day_of_week(df)
 
@@ -56,8 +55,7 @@ consumption_hours(df)
 
 # Create visualizers
 
-general_bars = GeneralBars()
-general_bars.update_source(df_monthly)
+general_bars = GeneralBars(df_monthly)
 
 consumptions_visualizer = MonthlyConsumption(df)
 consumptions_visualizer.update_source()
