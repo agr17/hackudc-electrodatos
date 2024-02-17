@@ -1,3 +1,10 @@
+# SPDX-FileCopyrightText: 2024 Manuel Corujo
+# SPDX-FileCopyrightText: 2024 María López
+# SPDX-FileCopyrightText: 2024 Pablo Boo
+# SPDX-FileCopyrightText: 2024 Ángel Regueiro
+#
+# SPDX-License-Identifier: MIT
+
 from bokeh.models import ColumnDataSource, FactorRange, Range1d
 from bokeh.palettes import Bright7
 from bokeh.plotting import figure

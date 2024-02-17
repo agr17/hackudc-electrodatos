@@ -1,3 +1,12 @@
+<!--
+SPDX-FileCopyrightText: 2024 Manuel Corujo
+SPDX-FileCopyrightText: 2024 María López
+SPDX-FileCopyrightText: 2024 Pablo Boo
+SPDX-FileCopyrightText: 2024 Ángel Regueiro
+
+SPDX-License-Identifier: MIT
+-->
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -7,27 +16,35 @@
         <link rel="stylesheet" type="text/css" href="/bokeh-vis/static/css/special.css">
         <script src="/bokeh-vis/static/js/special.js"></script>
     </head>
+  
     <body class="fade">
-        <section class="hero">
-            <h1 class="resaltado">Factura eléctrica wrapped</h1>
-        </section>
-
-        <h1 class="resaltado">{{ year }} ha sido un gran año para ti y nosotros hemos hecho una recopilación de los datos más destacados de tu factura eléctrica...</h1>
-
-        <h1>Estás en el top <span class="valor">{{ porcentaje_top }}</span>% de los consumidores de este año.</h1>
-
-        <h1>Has consumido de media este año <span class="valor"> {{ consumo_medio_input }} kWh.</span></h1>
-        <h1>Tu consumo medio es {{ comparacion }} a la media ({{ media_existente }} kWh).</h1>
-
-        <br><br>
-        <h1 class="resaltado">Gráficas de consumo</h1>
+        <section style="height: 100vh;">
+            <img src="bokeh-vis/static/images/electrodatos-high-resolution-logo.png" class="logo">
+ 
+             <h1 class="fade resaltado">A continuación puedes ver algunos de los datos más destacados de tu factura eléctrica en el año {{ year }}...</h1>
+ 
+             <h1 class="fade">Estás en el top <span class="valor">{{ porcentaje_top }}</span>% de la gente que más electricidad ha consumido este año.</h1>
+ 
+             <h1 class="fade">Has consumido de media <span class="valor">{{ consumo_medio_input }}</span>kWh.</h1>
+             <h1 class="fade">Tu consumo medio es {{ comparacion }} a la media (<span class="valor">{{ media_existente }}</span> kWh).</h1>
+ 
+             <h1 class="fade">En total este año has gastado <span class="valor">{{ gasto_total }}</span> € (<span class="valor">{{ gasto_media }}</span> € cada día).</h1> 
+ 
+             <h1 class="fade resaltado">Deslizando también puedes ver una serie de gráficas con datos sobre tu consumo y tu gasto.</h1>
+ 
+             <img src="bokeh-vis/static/images/arrow.png" class="arrow">
+         </section>
+  
         <div class="wrapper-bokeh">
             {{ plot_div|indent(8) }}
             {{ plot_script|indent(8) }}
         </div>
 
         <section class="hour-data">
-            <img class="block-mouse" src="bokeh-vis/static/images/circular_barplot_hours.png" alt="">
+            <div class="wrapper-img">
+                <h2 class="h2-img">Consumo medio por hora</h2>
+                <img class="block-mouse" src="bokeh-vis/static/images/circular_barplot_hours.png" alt="">
+            </div>
             <div class="wrapper-datos">
                 <h2>Otras estadísticas</h2>
 
@@ -59,10 +76,10 @@
             </div>
             <div class="wrapper-authors">
                 <ul>
-                    <li>Pablo Boo Iglesias (<a href="mailto:pablo@example.com">pablo@example.com</a>)</li>
-                    <li>Manuel Corujo Muíña (<a href="mailto:manuel@example.com">manuel@example.com</a>)</li>
-                    <li>María López García (<a href="mailto:maria@example.com">maria@example.com</a>)</li>
-                    <li>Ángel Regueiro Feal (<a href="mailto:angel@example.com">angel@example.com</a>)</li>
+                    <li>Pablo Boo Iglesias (<a href="mailto:pablo.boo@udc.es">pablo.boo@udc.es</a>)</li>
+                    <li>Manuel Corujo Muíña (<a href="mailto:manuel.corujom@udc.es">manuel.corujom@udc.es</a>)</li>
+                    <li>María López García (<a href="mailto:maria.lgarcia@udc.es">maria.lgarcia@udc.es</a>)</li>
+                    <li>Ángel Regueiro Feal (<a href="mailto:a.regueiro.feal@udc.es">a.regueiro.feal@udc.es</a>)</li>
 
                 </ul>
             </div>

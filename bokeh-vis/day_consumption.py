@@ -1,3 +1,10 @@
+# SPDX-FileCopyrightText: 2024 Manuel Corujo
+# SPDX-FileCopyrightText: 2024 María López
+# SPDX-FileCopyrightText: 2024 Pablo Boo
+# SPDX-FileCopyrightText: 2024 Ángel Regueiro
+#
+# SPDX-License-Identifier: MIT
+
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -65,7 +72,11 @@ def _consumption_hours(df):
     ax.set_theta_zero_location('N')
     ax.set_theta_direction(-1)
 
-    plt.title(label="Consumo total por horas")
+    # legend with label Consumo
+    ax.bar(0, 0, color='skyblue', label='Consumo')
+    # legend in the max upper right corner
+    plt.legend(loc='upper right')
+    # plt.title(label="Consumo total por horas")
 
     # Save plot
     plt.savefig('bokeh-vis/static/images/circular_barplot_hours.png')

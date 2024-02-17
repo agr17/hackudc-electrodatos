@@ -1,8 +1,17 @@
+<!--
+SPDX-FileCopyrightText: 2024 Manuel Corujo
+SPDX-FileCopyrightText: 2024 María López
+SPDX-FileCopyrightText: 2024 Pablo Boo
+SPDX-FileCopyrightText: 2024 Ángel Regueiro
+
+SPDX-License-Identifier: MIT
+-->
+
 # HackUDC: electrodatos
 
 <p align="center">
     <a href="https://github.com/agr17/hackudc-electrodatos/" alt="hackudc-electrodatos">
-        <img src="https://github.com/agr17/hackudc-electrodatos/blob/main/assets/electrodatos-high-resolution-logo.svg.png"/>
+        <img src="https://github.com/agr17/hackudc-electrodatos/blob/main/assets/electrodatos-high-resolution-logo.png"/>
     </a>
 </p>
 
@@ -21,9 +30,7 @@
     </a>
 </p>
 
-This work is licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License][cc-by-sa].
-
-[![CC BY-SA 4.0][cc-by-sa-image]][cc-by-sa]
+This work is licensed under a [MIT license](https://opensource.org/license/mit/).
 
 [cc-by-sa]: http://creativecommons.org/licenses/by-sa/4.0/
 [cc-by-sa-image]: https://licensebuttons.net/l/by-sa/4.0/88x31.png
@@ -34,12 +41,20 @@ Electrodatos is an electric bill visualizer.
 
 ## TOC
 
+- [Installation and usage](#installation-and-usage)
 - [Tech](#tech)
 - [Development](#development)
-  * [GitHub](#github)
-- [Usage](#usage)
 - [License](#license)
 
+## Installation and usage
+
+````
+pip install -r requirements.txt
+````
+
+````
+bokeh serve bokeh-vis --show --args .\data\cups\electrodatos_0.csv 2022
+````
 
 ## Tech
 
@@ -54,47 +69,14 @@ And of course Electrodatos itself is open source with a [public repository](http
 
 ## Development
 
-Want to contribute? Great!
+Here are several ways you can contribute to the Electrodatos project:
 
-### Git-Flow
-
-Carggregator uses git-flow to structure its repository! Open your favorite Terminal and run these commands.
-
-Initialize git-flow:
-```sh
-bash .bin/git_gitflow.sh init
-```
-
-Start a new feature:
-```sh
-git flow feature start Issue-X
-```
-
-Finish a feature:
-```sh
-git flow feature finish Issue-X
-```
-
-## Instalation
-
-````
-pip install -r requirements.txt
-````
-
-
-## Usage
-
-### Bokeh
-
-````
-bokeh serve bokeh-vis --show --args .\data\cups\electrodatos_0.csv
-````
-
+- Propose Pull Requests (PRs) to rectify bugs or introduce new features.
+- Offer feedback and report bugs concerning the software or documentation.
+- Improve our documentation.
 
 ## License
-
-GNU General Public License v3.0
-
+The MIT License (MIT).
 
 [hack-udc-electrodatos]: <https://github.com/agr17/hackudc-electrodatos>
 [git-repo-url]: <https://github.com/agr17/hackudc-electrodatos.git>

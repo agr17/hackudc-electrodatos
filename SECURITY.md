@@ -1,3 +1,12 @@
+<!--
+SPDX-FileCopyrightText: 2024 Manuel Corujo
+SPDX-FileCopyrightText: 2024 María López
+SPDX-FileCopyrightText: 2024 Pablo Boo
+SPDX-FileCopyrightText: 2024 Ángel Regueiro
+
+SPDX-License-Identifier: MIT
+-->
+
 <!-- AUTO-GENERATED, DO NOT EDIT! -->
 <!-- Please edit the original at https://github.com/ory/meta/blob/master/templates/repository/common/SECURITY.md -->
 

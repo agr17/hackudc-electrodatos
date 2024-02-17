@@ -1,3 +1,12 @@
+/*
+ * SPDX-FileCopyrightText: 2024 Manuel Corujo
+ * SPDX-FileCopyrightText: 2024 María López
+ * SPDX-FileCopyrightText: 2024 Pablo Boo
+ * SPDX-FileCopyrightText: 2024 Ángel Regueiro
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
 :root {
     /* Theme Colors */
     --theme-primary: #6abf69;/*#1556ac;*/
@@ -43,7 +52,7 @@ body {
 }
 
 /* Estilos para los encabezados (h1, h2) */
-h1, h2 {
+h1 {
     margin-top: 0; /* Eliminar margen superior predeterminado */
     margin-bottom: 20px; /* Espaciado inferior */
     font-weight: bold; /* Fuente en negrita */
@@ -86,11 +95,27 @@ a:hover {
     opacity: 1;
 }
 
+/***************** First Section ***********/
+
 .resaltado {
     color: var(--theme-primary); /* Tonos verdosos claros/pastel */
     /* font-family: 'Roboto', sans-serif; Tipografía especial y legible */
-    font-size: 1.2em; /* Tamaño de fuente */
+    /* font-size: 1.2em; Tamaño de fuente */
     font-weight: bold; /* Fuente en negrita */
+}
+
+.logo {
+    width: 50%;
+    height: 20vh;
+    display: block;
+    margin: 10vh auto;
+}
+
+.arrow {
+    width: 100px;
+    display: block;
+    /* margin: 0 auto; */
+    margin: 10vh auto 0
 }
 
 /***************** Footer *****************/
@@ -141,6 +166,18 @@ footer {
 
 .block-mouse {
     pointer-events: none;
+}
+
+.wrapper-img {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.h2-img {
+    text-align: center;
+    margin-bottom: 0;
 }
 
 .hour-data {
