@@ -43,7 +43,7 @@ Electrodatos is an electric bill visualizer.
 
 - [Tech](#tech)
 - [Development](#development)
-  * [GitHub](#github)
+  * [Git-Flow](#git-flow)
 - [Usage](#usage)
 - [License](#license)
 
