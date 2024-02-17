@@ -10,6 +10,10 @@ from bokeh.layouts import column
 
 import sys
 
+
+from top_percentage_consumers import calcular_porcentaje_top
+from average_consume import calcular_average_consume
+
 def _unify_data(df_consumption, df_costs):
         df = df_consumption.set_index('datetime').join(df_costs.set_index('datetime'))
         df.reset_index(inplace=True)
@@ -55,3 +59,14 @@ bars_plot = general_bars.get_plot()
 layout = column(bars_plot, sizing_mode="stretch_width")
 curdoc().add_root(layout)
 
+# Obtener el porcentaje top del año
+year = "2021"
+porcentaje_top = calcular_porcentaje_top(csv_path, year)
+curdoc().template_variables["porcentaje_top"] = porcentaje_top
+curdoc().template_variables["year"] = year
+
+# Obtener el consumo medio del año
+resultados = calcular_average_consume(csv_path, year)
+curdoc().template_variables["media_existente"] = resultados["media_existente"]
+curdoc().template_variables["consumo_medio_input"] = resultados["consumo_medio_input"]
+curdoc().template_variables["comparacion"] = resultados["comparacion"]
