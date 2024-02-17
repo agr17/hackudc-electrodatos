@@ -23,7 +23,7 @@ class GeneralBars:
     def get_plot(self):
 
         p = figure(
-            title="Gráfica de Gasto",
+            title="Gráfica de consumo y gastos anual",
             x_axis_label='Mes',
             sizing_mode="stretch_width",
             x_range=FactorRange(*self.factors),
@@ -44,8 +44,6 @@ class GeneralBars:
         consumption_tool = HoverTool(renderers=[vbar_consumption], tooltips=[('Consumo', '@consumption{0.00} kWh')])
         cost_tool = HoverTool(renderers=[vbar_cost], tooltips=[('Coste', '@cost{0.00} €')])
         p.add_tools(consumption_tool, cost_tool)
-
-        print(self.source.data)
 
         return p
 

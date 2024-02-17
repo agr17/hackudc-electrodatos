@@ -1,9 +1,9 @@
-import argparse
 import datetime as dt
+import pandas as pd
+import argparse
 import os
 
-import pandas as pd
-import pvpc
+import src.pvpc as pvpc
 
 FILES_PATH = "./data/marginalpdbc_2022/"
 
@@ -70,7 +70,7 @@ def get_costs_from_api(start_date, end_date):
             date = day + dt.timedelta(hours=int(hour))
             costs.append([date, cost])
 
-    df = pd.DataFrame(costs, columns=["datetime", "cost"])
+    df = pd.DataFrame(costs, columns=["datetime", "price"])
     df.to_csv(f"./data/{start_date.year}_costs.csv", index=False)
     return df
 
@@ -91,11 +91,12 @@ def read_costs(start_date, end_date):
                 return get_costs_from_api(start_date, end_date)
 
         df = pd.concat(dfs)
-        filtered_df = df.loc[
+        df = df.loc[
             (df["datetime"] >= start_datetime.strftime("%Y-%m-%d %H:%M:%S"))
             & (df["datetime"] <= end_datetime.strftime("%Y-%m-%d %H:%M:%S"))
         ]
-        return filtered_df
+        df["datetime"] = pd.to_datetime(df["datetime"])
+        return df
     else:
         return get_costs_from_api(start_date, end_date)
 
@@ -105,18 +106,3 @@ if __name__ == "__main__":
 
     df = read_costs(args.start_date, args.end_date)
     print(df.head())
-    # read_data(args.start_date, args.end_date)
-    # get_costs_from_api(args.start_date, args.end_date)
-
-    # url = "https://api.esios.ree.es/archives/3183/download_json"
-
-    # headers = {
-    #     "Accept": "application/json; application/vnd.esios-api-v1+json",
-    #     "Content-Type": "application/json",
-    #     "x-api-key": "6753856a894a0a3b27bb41cb7843db6f2d2eb77ab8cf3d49b7e39f7980cef700"
-    # }
-
-    # response = requests.get(url, headers=headers)
-    # print(response)
-    # response_json = response.json()
-    # print(response_json)

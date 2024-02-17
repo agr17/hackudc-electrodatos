@@ -33,7 +33,7 @@ csv_path = sys.argv[1]
 # Load the data
 
 df_consumption = consumption_data.load_data(csv_path)
-df_costs = cost_data.read_data("2022-01-01", "2022-12-31")
+df_costs = cost_data.read_costs("2022-01-01", "2022-12-31")
 
 df = _unify_data(df_consumption, df_costs)
 df.dropna(inplace=True) # TODO: esto es temporal para filtrar rapido
