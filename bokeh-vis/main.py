@@ -1,21 +1,19 @@
 from monthly_consumption import MonthlyConsumption
 from general_bars import GeneralBars
 from day_consumption_visualizer import DayConsumptionVisualizer
-from day_consumption import consumption_hours
+from day_consumption import _consumption_hours, _mean_consumption_by_day_of_week, _week_day_most_least_consumption, _day_of_year_most_least_consumption
 import src.petitions as cost_data
 import src.data as consumption_data
+from src.constants import *
 
 from bokeh.models import Div
 from bokeh.plotting import curdoc
 from bokeh.layouts import column
 
-import pandas as pd
 import sys
 
 from top_percentage_consumers import calcular_porcentaje_top
 from average_consume import calcular_average_consume
-
-
 
 def _data_to_monthly(df):
     df_copy = df.copy()
@@ -23,12 +21,6 @@ def _data_to_monthly(df):
     result = df_copy.groupby('month').agg({'consumo': 'sum', 'expenses': 'sum'}).reset_index()
     result.columns = ['month', 'consumo', 'expenses']
     return result
-
-def _mean_consumption_by_day_of_week(df):
-    df = pd.DataFrame(df.groupby(df['datetime'].dt.day_of_week)['consumo'].mean())
-    df = df.reset_index()
-    df = df.rename(columns={"consumo": "consumption", "datetime": "weekday"})
-    return df
 
 # Get the arguments
 
@@ -56,7 +48,7 @@ df_monthly = df_monthly[df_monthly['month'] < "2023-01"]
 df_weekday = _mean_consumption_by_day_of_week(df)
 
 # Use matplotlib to get the consumption by hours
-consumption_hours(df)
+_consumption_hours(df)
 
 # Create visualizers
 
@@ -95,3 +87,21 @@ resultados = calcular_average_consume(csv_path, year)
 curdoc().template_variables["media_existente"] = resultados["media_existente"]
 curdoc().template_variables["consumo_medio_input"] = resultados["consumo_medio_input"]
 curdoc().template_variables["comparacion"] = resultados["comparacion"]
+
+# Obtener días más/menos consumo
+week_days_most_least_consumption = _week_day_most_least_consumption(df)
+curdoc().template_variables["most_consumption"] = week_days_most_least_consumption[0].upper()
+curdoc().template_variables["least_consumption"] = week_days_most_least_consumption[1].upper()
+
+# Obtener días del año de mayor/menor consumo
+max, min = _day_of_year_most_least_consumption(df)
+
+curdoc().template_variables["max_day"] = max.name[0]
+curdoc().template_variables["max_month"] = MONTHS_DICT[max.name[1]]
+curdoc().template_variables["max_year"] = max.name[2]
+curdoc().template_variables["max_cons"] = max.max()
+
+curdoc().template_variables["min_day"] = min.name[0]
+curdoc().template_variables["min_month"] = MONTHS_DICT[min.name[1]]
+curdoc().template_variables["min_year"] = min.name[2]
+curdoc().template_variables["min_cons"] = min.min()

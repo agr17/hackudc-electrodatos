@@ -16,8 +16,8 @@
 
         <h1>Estás en el top <span class="valor">{{ porcentaje_top }}</span>% de los consumidores de este año.</h1>
 
-        <h1>Has consumido de media este año <span class="valor"> {{ consumo_medio_input }} kWh/h.</span></h1>
-        <h1>Tu consumo medio es {{ comparacion }} a la media ({{ media_existente }} kWh/h).</h1>
+        <h1>Has consumido de media este año <span class="valor"> {{ consumo_medio_input }} kWh.</span></h1>
+        <h1>Tu consumo medio es {{ comparacion }} a la media ({{ media_existente }} kWh).</h1>
 
         <br><br>
         <h1 class="resaltado">Gráficas de consumo</h1>
@@ -27,9 +27,26 @@
         </div>
 
         <section class="hour-data">
-            <img src="bokeh-vis/static/images/circular_barplot_hours.png" alt="">
+            <img class="block-mouse" src="bokeh-vis/static/images/circular_barplot_hours.png" alt="">
             <div class="wrapper-datos">
-                <h2>Estadísticas curiosas</h2>
+                <h2>Otras estadísticas</h2>
+
+                <p class="statistics-center">El día de la semana con <b>más</b> consumo de media es el:</p>
+                <p class="statistics">{{ most_consumption }}</p>
+
+                <p class="statistics-center">El día de la semana con <b>menos</b> consumo de media es el:</p>
+                <p class="statistics">{{ least_consumption }}</p>
+
+                <div class="line"/>
+
+                <br><br>
+
+                <p class="statistics-center">Tu pico <b>máximo</b> de consumo fue en el día <b>{{max_day}} de {{max_month}} de {{max_year}}</b>, con {{max_cons}} kWh</p>
+
+                <br><br>
+
+                <p class="statistics-center">Además, el día <b>{{min_day}} de {{min_month}} de {{min_year}}</b> fue tu día de <b>menor</b> consumo, donde solamente consumiste {{min_cons}} kWh</p>
+
             </div>
         </section>
 

@@ -139,12 +139,38 @@ footer {
 
 /***************** hour-data *****************/
 
+.block-mouse {
+    pointer-events: none;
+}
+
 .hour-data {
     margin: 0 10%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    padding:10px;
 }
 
 .hour-data img {
     width: 90%;
 }
+
+/***************** statitics *****************/
+.statistics-center {
+    text-align: center;
+}
+
+.statistics {
+    text-align: center;
+    font-weight: bold;
+    padding:10px;
+}
+
+
+.line {
+    flex-grow: 1;
+    height: 0.2rem;
+    margin: 1em;
+    background-color: var(--theme-bg-accent-2);;
+    border-radius: 0.1rem;
+}
+

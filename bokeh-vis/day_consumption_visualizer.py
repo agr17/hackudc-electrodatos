@@ -2,12 +2,13 @@ from bokeh.models import ColumnDataSource, FactorRange, Range1d
 from bokeh.palettes import Bright7
 from bokeh.plotting import figure
 from bokeh.transform import dodge
+from src.constants import *
 
 class DayConsumptionVisualizer:
     def __init__(self):
         super().__init__()
         self.source = ColumnDataSource(data=self._get_empty_source())
-        self.factors = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"]
+        self.factors = WEEK_DAYS
 
     def _get_empty_source(self):
         return {
@@ -45,8 +46,8 @@ class DayConsumptionVisualizer:
 
     def update_source(self, new_data):
         self.source.data = {
-            'consumption': new_data['consumption'],
-            'weekday': new_data['weekday'],
+            'consumption': new_data['consumo'],
+            'weekday': new_data['datetime'],
             'weekday_name': self.factors,
             'color': Bright7
         }

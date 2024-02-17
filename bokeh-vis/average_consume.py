@@ -36,9 +36,9 @@ def calcular_average_consume(csv_path, year):
 
     # Mostrar el consumo medio por CUPS y la media final
     for cups_id, consumo_medio in enumerate(consumo_medio_por_cups):
-        print(f"CUPS {cups_id}: Consumo medio = {consumo_medio:.2f} kWh/h")
+        print(f"CUPS {cups_id}: Consumo medio = {consumo_medio:.2f} kWh")
 
-    print(f"Media Final de todos los CUPS: {media_final:.2f} kWh/h")
+    print(f"Media Final de todos los CUPS: {media_final:.2f} kWh")
 
 
     # Calculo media del archivo del usuario
@@ -56,8 +56,8 @@ def calcular_average_consume(csv_path, year):
         comparacion = "igual"
 
     print("\n\nMÉTRICA WRAPPED:\n")
-    print(f"De media el resto de usuarios ha consumido: {media_final:.2f} kWh/h")
-    print(f"Tu consumo medio es {comparacion} a la media ({consumo_medio_input:.2f} kWh/h).")
+    print(f"De media el resto de usuarios ha consumido: {media_final:.2f} kWh")
+    print(f"Tu consumo medio es {comparacion} a la media ({consumo_medio_input:.2f} kWh).")
 
     return {
         "media_existente": "{:.2f}".format(media_final),
