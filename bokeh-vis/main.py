@@ -1,5 +1,4 @@
-from consumptions_visualizer import ConsumptionsVisualizer
-from costs_visualizer import CostsVisualizer
+from monthly_consumption import MonthlyConsumption
 from general_bars import GeneralBars
 from day_consumption_visualizer import DayConsumptionVisualizer
 import src.petitions as cost_data
@@ -61,19 +60,25 @@ df_weekday = _mean_consumption_by_day_of_week(df)
 general_bars = GeneralBars()
 general_bars.update_source(df_monthly)
 
+consumptions_visualizer = MonthlyConsumption(df)
+consumptions_visualizer.update_source()
+
 consumption_vis = DayConsumptionVisualizer()
 consumption_vis.update_source(df_weekday)
+
 
 # Get the plots
 
 bars_plot = general_bars.get_plot()
+consumptions_plot = consumptions_visualizer.get_layout()
 
 weekday_plot = consumption_vis.get_plot()
 
 # Create the layout
 
-layout = column(bars_plot, weekday_plot, 
+layout = column(bars_plot, consumptions_plot, weekday_plot, 
                 sizing_mode="stretch_width")
+
 curdoc().add_root(layout)
 
 # Obtener el porcentaje top del año
