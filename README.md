@@ -2,7 +2,7 @@
 
 <p align="center">
     <a href="https://github.com/agr17/hackudc-electrodatos/" alt="hackudc-electrodatos">
-        <img src="https://github.com/agr17/hackudc-electrodatos/blob/main/assets/electrodatos-high-resolution-logo.svg.png"/>
+        <img src="https://github.com/agr17/hackudc-electrodatos/blob/main/assets/electrodatos-high-resolution-logo.png"/>
     </a>
 </p>
 
@@ -56,10 +56,24 @@ And of course Electrodatos itself is open source with a [public repository](http
 
 Want to contribute? Great!
 
-### GitHub
+### Git-Flow
 
-In addition to a repository, GitHub offers a range of features, including a Kanban board for project planning. We have a simple approach where we use issues to plan new features. We create branches from these issues and merge them through pull requests. There are no specific requirements for naming or other related aspects, simply use English.
+Carggregator uses git-flow to structure its repository! Open your favorite Terminal and run these commands.
 
+Initialize git-flow:
+```sh
+bash .bin/git_gitflow.sh init
+```
+
+Start a new feature:
+```sh
+git flow feature start Issue-X
+```
+
+Finish a feature:
+```sh
+git flow feature finish Issue-X
+```
 
 ## Instalation
 

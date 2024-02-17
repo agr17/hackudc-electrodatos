@@ -7,7 +7,8 @@
         <link rel="stylesheet" type="text/css" href="/bokeh-vis/static/css/special.css">
         <script src="/bokeh-vis/static/js/special.js"></script>
     </head>
-    <body>
+  
+    <body class="fade">
         <section style="height: 100vh;">
            <img src="bokeh-vis/static/images/electrodatos-high-resolution-logo.png" class="logo">
 
@@ -22,13 +23,20 @@
 
             <h1 class="fade resaltado">Por último también puedes ver una serie de gráficas con datos sobre tu consumo y tu gasto.</h1>
         </section>
-        
-        <div class="fade">
+  
+        <div class="wrapper-bokeh">
             {{ plot_div|indent(8) }}
             {{ plot_script|indent(8) }}
         </div>
 
-        <footer class="fade footer">
+        <section class="hour-data">
+            <img src="bokeh-vis/static/images/circular_barplot_hours.png" alt="">
+            <div class="wrapper-datos">
+                <h2>Estadísticas curiosas</h2>
+            </div>
+        </section>
+
+        <footer class="footer">
             <div class="wrapper-text">
                 <p>Aplicación Bokeh desarrollada en HackUDC 2024 para el reto propuesto por Gradiant, para más información visita nuestro repositorio de GitHub.</p>
                 <a href="https://github.com/agr17/hackudc-electrodatos">

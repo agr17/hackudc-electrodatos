@@ -1,6 +1,7 @@
 from monthly_consumption import MonthlyConsumption
 from general_bars import GeneralBars
 from day_consumption_visualizer import DayConsumptionVisualizer
+from day_consumption import consumption_hours
 import src.petitions as cost_data
 import src.data as consumption_data
 
@@ -9,19 +10,10 @@ from bokeh.plotting import curdoc
 from bokeh.layouts import column
 
 import pandas as pd
-
 import sys
-
 
 from top_percentage_consumers import calcular_porcentaje_top
 from average_consume import calcular_average_consume
-
-def _data_to_monthly(df):
-    df_copy = df.copy()
-    df_copy['month'] = df_copy['datetime'].dt.to_period('M')
-    result = df_copy.groupby('month').agg({'consumo': 'sum', 'expenses': 'sum'}).reset_index()
-    result.columns = ['month', 'consumo', 'expenses']
-    return result
 
 def _mean_consumption_by_day_of_week(df):
     df = pd.DataFrame(df.groupby(df['datetime'].dt.day_of_week)['consumo'].mean())
@@ -31,28 +23,36 @@ def _mean_consumption_by_day_of_week(df):
 
 # Get the arguments
 
-if len(sys.argv) != 2:
-    print("Usage: bokeh serve bokeh-vis [--show] --args <csv>")
+if len(sys.argv) != 3:
+    print("Usage: bokeh serve bokeh-vis [--show] --args <csv> <year>")
     print("Your input: ", sys.argv)
 
 csv_path = sys.argv[1]
+year = sys.argv[2]
 
 # Load the data
 
 df_consumption = consumption_data.load_data(csv_path)
-df_costs = cost_data.read_costs("2022-01-01", "2022-12-31")
+
+# check if the year exist in datetime column
+if not consumption_data.check_year(df_consumption, year):
+    print(f"Year {year} not found in the data")
+    sys.exit(1)
+
+df_costs = cost_data.read_costs(f"{year}-01-01", f"{year}-12-31")
 
 df = consumption_data.unify_data(df_consumption, df_costs)
 df.dropna(inplace=True) # TODO: esto es temporal para filtrar rapido
 
 df = consumption_data.calculate_expenses(df)
 
-print(df.head())
-
-df_monthly = _data_to_monthly(df)
+df_monthly = consumption_data.data_to_monthly(df)
 df_monthly = df_monthly[df_monthly['month'] < "2023-01"]
 
 df_weekday = _mean_consumption_by_day_of_week(df)
+
+# Use matplotlib to get the consumption by hours
+consumption_hours(df)
 
 # Create visualizers
 
@@ -81,7 +81,6 @@ layout = column(bars_plot, consumptions_plot, weekday_plot,
 curdoc().add_root(layout)
 
 # Obtener el porcentaje top del año
-year = "2022"
 porcentaje_top = calcular_porcentaje_top(csv_path, year)
 curdoc().template_variables["porcentaje_top"] = porcentaje_top
 curdoc().template_variables["year"] = year
