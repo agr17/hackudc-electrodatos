@@ -100,7 +100,7 @@ a:hover {
 .resaltado {
     color: var(--theme-primary); /* Tonos verdosos claros/pastel */
     /* font-family: 'Roboto', sans-serif; Tipografía especial y legible */
-    font-size: 1.2em; /* Tamaño de fuente */
+    /* font-size: 1.2em; Tamaño de fuente */
     font-weight: bold; /* Fuente en negrita */
 }
 
@@ -108,7 +108,14 @@ a:hover {
     width: 50%;
     height: 20vh;
     display: block;
-    margin: 5vh auto;
+    margin: 10vh auto;
+}
+
+.arrow {
+    width: 100px;
+    display: block;
+    /* margin: 0 auto; */
+    margin: 10vh auto 0
 }
 
 /***************** Footer *****************/
