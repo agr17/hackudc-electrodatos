@@ -3,12 +3,10 @@ from datetime import datetime
 from utils.data import load_data
 from calendar import day_name
 
-def mean_consumption_by_day_of_week(df):
+def _mean_consumption_by_day_of_week(df):
     df = pd.DataFrame(df.groupby(df['datetime'].dt.day_of_week)['consumo'].mean())
     df = df.reset_index()
-    #df = df.rename(columns={"datetime": "weekday"})
-    df['datetime'] = df['datetime'].apply(lambda x: day_name[x])
-    print(df)
+    df = df.rename(columns={"consumo": "consumption", "datetime": "weekday"})
     return df
 
 csv_path = "data/cups/electrodatos_0.csv"
