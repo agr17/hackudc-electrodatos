@@ -1,0 +1,14 @@
+attrs:
+  figure:
+    background_fill_color: "#f4f4f4"
+    outline_line_color: null
+  Grid:
+    grid_line_color: "#ffffff"
+  Axis:
+    axis_line_color: "#ffffff"
+    major_label_text_color: "#666666"
+    major_tick_line_color: "#666666"
+    minor_tick_line_color: "#666666"
+    axis_label_text_color: "#666666"
+  Title:
+    text_color: "#333333"
