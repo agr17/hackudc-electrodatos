@@ -2,6 +2,8 @@ from bokeh.models import ColumnDataSource, FactorRange, HoverTool
 from bokeh.plotting import figure
 from bokeh.transform import dodge
 from bokeh.models import LinearAxis
+from constants import *
+
 class GeneralBars:
     def __init__(self):
         super().__init__()
@@ -30,15 +32,15 @@ class GeneralBars:
             toolbar_location=None,
         )
 
-        vbar_consumption = p.vbar(x=dodge('time', -0.20, range=p.x_range), top='consumption', width=0.3, source=self.source, color="skyblue", legend_label="Consumo")
-        vbar_cost = p.vbar(x=dodge('time', 0.20, range=p.x_range), top='cost', width=0.3, source=self.source, color="chocolate", legend_label="Coste")
+        vbar_consumption = p.vbar(x=dodge('time', -0.20, range=p.x_range), top='consumption', width=0.3, source=self.source, color=CONSUMPTION_COLOR, legend_label="Consumo")
+        vbar_cost = p.vbar(x=dodge('time', 0.20, range=p.x_range), top='cost', width=0.3, source=self.source, color=COSTS_COLOR, legend_label="Coste")
 
         # Twin y axis
         p.yaxis.axis_label = "Gasto (€)"
-        p.yaxis.axis_label_text_color ="chocolate"
+        p.yaxis.axis_label_text_color =COSTS_COLOR
 
         p.extra_y_ranges = {"consumption": p.y_range}
-        p.add_layout(LinearAxis(y_range_name="consumption", axis_label="Consumo (kWh)", axis_label_text_color="skyblue"), 'right')
+        p.add_layout(LinearAxis(y_range_name="consumption", axis_label="Consumo (kWh)", axis_label_text_color=CONSUMPTION_COLOR), 'right')
 
         # Toolstips
         consumption_tool = HoverTool(renderers=[vbar_consumption], tooltips=[('Consumo', '@consumption{0.00} kWh')])

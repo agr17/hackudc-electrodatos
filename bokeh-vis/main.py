@@ -1,5 +1,4 @@
 from consumptions_visualizer import ConsumptionsVisualizer
-from costs_visualizer import CostsVisualizer
 from general_bars import GeneralBars
 import src.petitions as cost_data
 import src.data as consumption_data
@@ -46,12 +45,16 @@ df_monthly = df_monthly[df_monthly['month'] < "2023-01"]
 general_bars = GeneralBars()
 general_bars.update_source(df_monthly)
 
+consumptions_visualizer = ConsumptionsVisualizer(df)
+consumptions_visualizer.update_source()
+
 # Get the plots
 
 bars_plot = general_bars.get_plot()
+consumptions_plot = consumptions_visualizer.get_layout()
 
 # Create the layout
 
-layout = column(bars_plot, sizing_mode="stretch_width")
+layout = column(bars_plot, consumptions_plot, sizing_mode="stretch_width")
 curdoc().add_root(layout)
 
