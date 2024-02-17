@@ -94,7 +94,7 @@ pip install -r requirements.txt
 ### Bokeh
 
 ````
-bokeh serve bokeh-vis --show --args .\data\cups\electrodatos_0.csv
+bokeh serve bokeh-vis --show --args .\data\cups\electrodatos_0.csv 2022
 ````
 
 
