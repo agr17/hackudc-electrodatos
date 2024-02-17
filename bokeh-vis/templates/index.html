@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <style>
+            body { background: #AFAFAF; }
+            .hero { width: 100%; text-align: center; }
+        </style>
+        <meta charset="utf-8">
+        {{ bokeh_css }}
+        {{ bokeh_js }}
+    </head>
+    <body>
+        <section class="hero">
+            <h1>Consumption</h1>
+        </section>
+        {{ plot_div|indent(8) }}
+        {{ plot_script|indent(8) }}
+        <footer>
+            <h2>Créditos</h2>
+            <ul>
+                <li>Pablo</li>
+                <li>Manuel</li>
+                <li>María</li>
+                <li>Ángel</li>
+            </ul>
+        </footer>
+    </body>
+</html>
