@@ -40,6 +40,8 @@ def read_data(start_date, end_date):
                 if not 1 <= i <= 24:
                     continue
                 line = line[:-2].split(";")
+                if len(line) != 6: # ignore lines with wrong format
+                    continue
                 year = line[0]
                 month = line[1]
                 day = line[2]
@@ -49,7 +51,13 @@ def read_data(start_date, end_date):
                     hours=int(hour)
                 )
                 costs.append([date, price])
-    return pd.DataFrame(costs, columns=["datetime", "price"])
+    df = pd.DataFrame(costs, columns=["datetime", "price"])
+
+    # divide price by 1000 to get €/kWh
+    df["price"] = df["price"].astype(float) / 1000
+
+    return df
+
 
 
 def read_costs():
