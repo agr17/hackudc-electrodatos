@@ -15,3 +15,14 @@ def unify_data(df_consumption, df_costs):
 def calculate_expenses(df):
     df['expenses'] = df['consumo'] * df['price']
     return df
+
+def data_to_monthly(df):
+    df_copy = df.copy()
+    df_copy['month'] = df_copy['datetime'].dt.to_period('M')
+    result = df_copy.groupby('month').agg({'consumo': 'sum', 'expenses': 'sum'}).reset_index()
+    result.columns = ['month', 'consumo', 'expenses']
+    return result
+
+def check_year(df, year):
+    print(df['datetime'].dt.year.unique())
+    return int(year) in df['datetime'].dt.year.unique()
