@@ -13,6 +13,7 @@ SPDX-License-Identifier: MIT
         <meta charset="utf-8">
         {{ bokeh_css }}
         {{ bokeh_js }}
+        <title>Electrodatos</title>
         <link rel="stylesheet" type="text/css" href="/bokeh-vis/static/css/special.css">
         <script src="/bokeh-vis/static/js/special.js"></script>
     </head>
@@ -21,16 +22,16 @@ SPDX-License-Identifier: MIT
         <section style="height: 100vh;">
             <img src="bokeh-vis/static/images/electrodatos-high-resolution-logo.png" class="logo">
  
-             <h1 class="fade resaltado">A continuación puedes ver algunos de los datos más destacados de tu factura eléctrica en el año {{ year }}...</h1>
+             <h1 class="resaltado">A continuación puedes ver algunos de los datos más destacados de tu factura eléctrica en el año {{ year }}...</h1>
  
-             <h1 class="fade">Estás en el top <span class="valor">{{ porcentaje_top }}</span>% de la gente que más electricidad ha consumido este año.</h1>
+             <h1>Estás en el top <span class="valor">{{ porcentaje_top }}</span>% de la gente que más electricidad ha consumido este año.</h1>
  
-             <h1 class="fade">Has consumido de media <span class="valor">{{ consumo_medio_input }}</span>kWh.</h1>
-             <h1 class="fade">Tu consumo medio es {{ comparacion }} a la media (<span class="valor">{{ media_existente }}</span> kWh).</h1>
+             <h1>Has consumido de media <span class="valor">{{ consumo_medio_input }}</span> kWh.</h1>
+             <h1>Tu consumo medio es {{ comparacion }} a la media (<span class="valor">{{ media_existente }}</span> kWh).</h1>
  
-             <h1 class="fade">En total este año has gastado <span class="valor">{{ gasto_total }}</span> € (<span class="valor">{{ gasto_media }}</span> € cada día).</h1> 
+             <h1>En total este año has gastado <span class="valor">{{ gasto_total }}</span> € (<span class="valor">{{ gasto_media }}</span> € cada día).</h1> 
  
-             <h1 class="fade resaltado">Deslizando también puedes ver una serie de gráficas con datos sobre tu consumo y tu gasto.</h1>
+             <h1 class="resaltado">Deslizando también puedes ver una serie de gráficas con datos sobre tu consumo y tu gasto.</h1>
  
              <img src="bokeh-vis/static/images/arrow.png" class="arrow">
          </section>
@@ -46,21 +47,17 @@ SPDX-License-Identifier: MIT
                 <img class="block-mouse" src="bokeh-vis/static/images/circular_barplot_hours.png" alt="">
             </div>
             <div class="wrapper-datos">
-                <h2>Otras estadísticas</h2>
+                <h2 class="h2-img">Otras estadísticas</h2>
 
                 <p class="statistics-center">El día de la semana con <b>más</b> consumo de media es el:</p>
                 <p class="statistics">{{ most_consumption }}</p>
 
                 <p class="statistics-center">El día de la semana con <b>menos</b> consumo de media es el:</p>
-                <p class="statistics">{{ least_consumption }}</p>
+                <p class="statistics double-margin">{{ least_consumption }}</p>
 
                 <div class="line"/>
 
-                <br><br>
-
-                <p class="statistics-center">Tu pico <b>máximo</b> de consumo fue en el día <b>{{max_day}} de {{max_month}} de {{max_year}}</b>, con {{max_cons}} kWh</p>
-
-                <br><br>
+                <p class="statistics-center stats-margin-top">Tu pico <b>máximo</b> de consumo fue en el día <b>{{max_day}} de {{max_month}} de {{max_year}}</b>, con {{max_cons}} kWh</p>
 
                 <p class="statistics-center">Además, el día <b>{{min_day}} de {{min_month}} de {{min_year}}</b> fue tu día de <b>menor</b> consumo, donde solamente consumiste {{min_cons}} kWh</p>
 

@@ -34,6 +34,7 @@ def _data_to_monthly(df):
 if len(sys.argv) != 3:
     print("Usage: bokeh serve bokeh-vis [--show] --args <csv> <year>")
     print("Your input: ", sys.argv)
+    sys.exit(1)
 
 csv_path = sys.argv[1]
 year = sys.argv[2]

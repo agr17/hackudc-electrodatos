@@ -31,5 +31,4 @@ def data_to_monthly(df):
     return result
 
 def check_year(df, year):
-    print(df['datetime'].dt.year.unique())
     return int(year) in df['datetime'].dt.year.unique()

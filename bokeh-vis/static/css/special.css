@@ -193,6 +193,7 @@ footer {
 
 /***************** statitics *****************/
 .statistics-center {
+    margin-top: 2em;
     text-align: center;
 }
 
@@ -211,3 +212,6 @@ footer {
     border-radius: 0.1rem;
 }
 
+.stats-margin-top {
+    padding-top: 3em;
+}

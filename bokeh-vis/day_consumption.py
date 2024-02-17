@@ -75,7 +75,7 @@ def _consumption_hours(df):
     # legend with label Consumo
     ax.bar(0, 0, color='skyblue', label='Consumo')
     # legend in the max upper right corner
-    plt.legend(loc='upper right')
+    # plt.legend(loc='upper right')
     # plt.title(label="Consumo total por horas")
 
     # Save plot
