@@ -1,7 +1,6 @@
-```markdown
 # Uso de Electrodatos
 
-Electrodatos es una aplicación que te permite visualizar y analizar tus facturas eléctricas de una manera fácil y eficiente. Sigue estos pasos para comenzar:
+Electrodatos es una aplicación que te permite visualizar y analizar tus facturas eléctricas de una manera fácil y eficiente. Sigue los siguientes pasos para comenzar.
 
 ## Instalación
 
@@ -38,5 +37,3 @@ bokeh serve bokeh-vis --show --args .\data\cups\electrodatos_0.csv 2022
 ¡Las contribuciones son bienvenidas! Si deseas contribuir al desarrollo de Electrodatos, consulta el apartado Development del readme
 
 ¡Gracias por usar Electrodatos!
-
-```
