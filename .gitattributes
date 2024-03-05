@@ -1,0 +1,2 @@
+# Ignore notebook when computing language stats
+*.ipynb -linguist-detectable
